@@ -41,6 +41,9 @@ gem 'webpacker', '~> 3.0'
 # APIs
 gem "discogs-wrapper"
 
+# cron
+gem "whenever"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

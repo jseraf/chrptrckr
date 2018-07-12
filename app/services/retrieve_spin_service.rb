@@ -15,15 +15,16 @@ class RetrieveSpinService
     now_playing = @spin['now_playing']
 
     current_dj  = Dj.find_or_create_by(name: now_playing['dj'])
-    x = Spin.new( dj:              current_dj,
-                  artist_is_local: now_playing['artist_is_local'],
-                  track:           now_playing['track'],
-                  release:         now_playing['release'],
-                  label:           now_playing['label'],
-                  notes:           now_playing['notes'],
-                  lastfm_large_image: now_playing[''],
-                  played_at:       now_playing['played_at_local'],
-                  chirp_id:        now_playing['id'])
+    Spin.create(dj:              current_dj,
+                artist_is_local: now_playing['artist_is_local'],
+                track:           now_playing['track'],
+                release:         now_playing['release'],
+                label:           now_playing['label'],
+                notes:           now_playing['notes'],
+                lastfm_large_image: now_playing['lastfm_urls']['large_image'],
+                played_at:       now_playing['played_at_local'],
+                chirp_id:        now_playing['id'])
+    Rails.logger.info "#{now_playing['track']} saved"
   end
 
 end
