@@ -39,7 +39,7 @@ gem 'pagy'
 gem 'webpacker', '~> 3.0'
 
 # APIs
-gem 'buntine-discogs'
+gem "discogs-wrapper"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -62,6 +62,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
+  gem 'database_cleaner'
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome

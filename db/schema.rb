@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_020343) do
+ActiveRecord::Schema.define(version: 2018_07_12_144255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,4 +22,20 @@ ActiveRecord::Schema.define(version: 2018_07_12_020343) do
     t.index ["name"], name: "index_djs_on_name"
   end
 
+  create_table "spins", force: :cascade do |t|
+    t.bigint "dj_id"
+    t.boolean "artist_is_local", default: false
+    t.string "track"
+    t.string "release"
+    t.string "label"
+    t.text "notes"
+    t.string "lastfm_large_image"
+    t.datetime "played_at"
+    t.string "chirp_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dj_id"], name: "index_spins_on_dj_id"
+  end
+
+  add_foreign_key "spins", "djs"
 end
