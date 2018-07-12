@@ -1,0 +1,2 @@
+class DjsController < ApplicationController
+end
