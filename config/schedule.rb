@@ -2,10 +2,9 @@
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
-set :ouptut, '/log/cron_log.log'
 
 every 90.seconds do
-  runner "RetrieveSpinService.call"
+  runner "RetrieveSpinService.call", :output => {:error => '/Users/jds021/workspace/chrptrckr/log/cron_error.log', :standard => '/Users/jds021/workspace/chrptrckr/log/cron.log'}
 end
 
 # Example:
