@@ -15,8 +15,10 @@ class RetrieveSpinService
   def self.process_spin
     now_playing = @spin['now_playing']
 
-    current_dj  = Dj.find_or_create_by(name: now_playing['dj'])
-    Spin.create(dj:              current_dj,
+    dj     = Dj.find_or_create_by(name: now_playing['dj'])
+    artist = Artist.find_or_create_by(name: now_playing['artist'])
+    Spin.create(dj:              dj,
+                artist:          artist,
                 artist_is_local: now_playing['artist_is_local'],
                 track:           now_playing['track'],
                 release:         now_playing['release'],

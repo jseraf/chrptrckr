@@ -9,7 +9,7 @@ RSpec.describe Spin, type: :model do
   it 'has default attributes' do
     spin = Spin.new
     expect(spin.dj).to be_nil
-    # expect(spin.artist).to be_nil
+    expect(spin.artist).to be_nil
     expect(spin.track).to be_nil
     expect(spin.notes).to be_nil
     expect(spin.artist_is_local).to be false
@@ -22,9 +22,11 @@ RSpec.describe Spin, type: :model do
   context 'saving a spin' do
 
     # this is not an real scenario
-    it 'creates a valid instance when DJ association is set' do
+    it 'creates a valid instance when DJ and Artist associations are set' do
       dj_john = create(:dj)
-      spin    = build(:spin, dj: dj_john )
+      artist  = create(:artist)
+      byebug
+      spin    = build(:spin, dj: dj_john, artist: artist)
       expect(spin).to be_valid
     end
 
