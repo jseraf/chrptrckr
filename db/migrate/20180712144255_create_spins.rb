@@ -2,6 +2,7 @@ class CreateSpins < ActiveRecord::Migration[5.2]
   def change
     create_table :spins do |t|
       t.references :dj, foreign_key: true
+      t.references :artist, foreign_key: true
       t.boolean :artist_is_local, default: false
       t.string :track
       t.string :release

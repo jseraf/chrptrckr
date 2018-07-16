@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_07_15_224559) do
 
   create_table "spins", force: :cascade do |t|
     t.bigint "dj_id"
+    t.bigint "artist_id"
     t.boolean "artist_is_local", default: false
     t.string "track"
     t.string "release"
@@ -41,7 +42,6 @@ ActiveRecord::Schema.define(version: 2018_07_15_224559) do
     t.string "chirp_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "artist_id"
     t.index ["artist_id"], name: "index_spins_on_artist_id"
     t.index ["dj_id"], name: "index_spins_on_dj_id"
   end
