@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # pagination
 gem 'pagy'
 
-gem 'webpacker', '~> 3.0'
+# gem 'webpacker', '~> 3.0'
 
 # APIs
 gem "discogs-wrapper"
