@@ -40,6 +40,7 @@ gem 'pagy'
 
 # APIs
 gem "discogs-wrapper"
+gem "lastfm"
 
 # cron
 gem "whenever"

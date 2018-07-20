@@ -1,7 +1,7 @@
 class RetrieveSpinService
   def self.call
     playlist_url = 'https://chirpradio.appspot.com/api/current_playlist?src=chrptrckr'
-    @spin   = HTTParty.get(playlist_url)
+    @spin        = HTTParty.get(playlist_url)
     return if self.duplicate?
     process_spin
   end

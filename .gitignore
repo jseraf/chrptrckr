@@ -36,3 +36,6 @@ yarn-debug.log*
 
 # Notes during development
 /_notes
+
+# api credentials
+/config/credentials.yml.enc
