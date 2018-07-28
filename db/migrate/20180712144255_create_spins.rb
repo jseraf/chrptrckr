@@ -6,7 +6,7 @@ class CreateSpins < ActiveRecord::Migration[5.2]
       t.boolean :artist_is_local, default: false
       t.string :track
       t.string :release
-      t.string :label
+      t.references :label, foreign_key: true
       t.text :notes
       t.string :lastfm_large_image
       t.timestamp :played_at

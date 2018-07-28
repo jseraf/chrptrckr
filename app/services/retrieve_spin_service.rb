@@ -17,12 +17,14 @@ class RetrieveSpinService
 
     dj     = Dj.find_or_create_by(name: now_playing['dj'])
     artist = Artist.find_or_create_by(name: now_playing['artist'])
+    label  = Label.find_or_create_by(name: now_playing['label'])
+
     Spin.create(dj:              dj,
                 artist:          artist,
                 artist_is_local: now_playing['artist_is_local'],
                 track:           now_playing['track'],
                 release:         now_playing['release'],
-                label:           now_playing['label'],
+                label:           label,
                 notes:           now_playing['notes'],
                 lastfm_large_image: now_playing['lastfm_urls']['large_image'],
                 played_at:       now_playing['played_at_local'],

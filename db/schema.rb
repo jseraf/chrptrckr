@@ -47,13 +47,14 @@ ActiveRecord::Schema.define(version: 2018_07_16_020518) do
     t.boolean "artist_is_local", default: false
     t.string "track"
     t.string "release"
-    t.string "label"
+    t.bigint "label_id"
     t.text "notes"
     t.string "lastfm_large_image"
     t.datetime "played_at"
     t.string "chirp_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["label_id"], name: "index_spins_on_label_id"
     t.index ["artist_id"], name: "index_spins_on_artist_id"
     t.index ["dj_id"], name: "index_spins_on_dj_id"
   end
