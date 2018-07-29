@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :release do
-    title "MyString"
+    title "Release1"
   end
 end

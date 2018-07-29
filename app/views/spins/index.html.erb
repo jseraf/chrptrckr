@@ -1,0 +1,25 @@
+<% provide :title_tag, 'Recently Played' %>
+<h1>Recently Played</h1>
+
+<table>
+  <thead>
+    <th>Artist</th>
+    <th>Song</th>
+    <th>Release</th>
+    <th>Label</th>
+  </thead>
+  <tbody>
+  <% @spins.each do |spin| %>
+
+    <tr>
+      <td><%= link_to spin.artist.name, artist_path(spin.artist) %></td>
+      <td><%= spin.track %></td>
+      <td><%= spin.release %></td>
+      <td><%= spin.label.name %></td>
+    </tr>
+
+  <% end %>
+  </tbody>
+</table>
+
+<%= pagy_nav(@pagy).html_safe %>

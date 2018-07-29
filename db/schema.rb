@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_07_16_020518) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_labels_on_name"
   end
 
   create_table "releases", force: :cascade do |t|

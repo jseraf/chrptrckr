@@ -1,7 +1,11 @@
+<% @base_title = 'chrptrckr' %>
+<% @page_title_text = yield :title_tag %>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Chrptrckr</title>
+    <title>
+      <%= "#{@base_title}" %><%= page_title_tag @page_title_text %>
+    </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

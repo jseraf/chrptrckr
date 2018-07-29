@@ -1,0 +1,21 @@
+<% provide(:title_tag, "Recently played #{@dj.name}") %>
+
+<h1>Recently Played by <%= "#{@dj.name}" %></h1>
+
+<table>
+  <thead>
+    <th>Artist</th>
+    <th>Song</th>
+    <th>Release</th>
+    <th>Label</th>
+  </thead>
+  <tbody>
+  <% @spins.each do |spin| %>
+
+    <%= render :partial => 'spins/spin', object: spin %>
+
+  <% end %>
+  </tbody>
+</table>
+
+<%= pagy_nav(@pagy).html_safe %>

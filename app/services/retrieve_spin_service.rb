@@ -29,7 +29,7 @@ class RetrieveSpinService
                 lastfm_large_image: now_playing['lastfm_urls']['large_image'],
                 played_at:       now_playing['played_at_local'],
                 chirp_id:        now_playing['id'])
-    Rails.logger.info "#{now_playing['track']} saved"
+
   end
 
 end
