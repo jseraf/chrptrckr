@@ -7,12 +7,12 @@
     <th>Artist</th>
     <th>Song</th>
     <th>Release</th>
-    <th>Label</th>
+    <th>Played at</th>
   </thead>
   <tbody>
   <% @spins.each do |spin| %>
 
-    <%= render :partial => 'spins/spin', object: spin %>
+    <%= render "label_spin", spin: spin %>
 
   <% end %>
   </tbody>

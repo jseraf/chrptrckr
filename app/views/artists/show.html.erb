@@ -1,17 +1,35 @@
 <% provide(:title_tag, "Recently played by #{@artist.name}") %>
 
-<h1>Recently Played songs by <%= "#{@artist.name}" %></h1>
+<h1><%= "#{@artist.name}" %></h1>
+<p>Last.fm bio / pic to go here</p>
+
+<div class="play_info">
+  <h2>Played:</h2>
+  <dl>
+    <dt>Today:</dt>
+    <dd><%= today_count %></dd>
+    <dt>Yesterday:</dt>
+    <dd><%= yesterday_count %></dd>
+    <dt>This Week:</dt>
+    <dd><%= this_week_count %></dd>
+    <dt>This Month:</dt>
+    <dd><%= this_month_count %></dd>
+  </dl>
+</div>
+
+<h1>Recently Played</h1>
 
 <table>
   <thead>
     <th>Song</th>
     <th>Release</th>
     <th>Label</th>
+    <th>Played</th>
   </thead>
   <tbody>
   <% @spins.each do |spin| %>
 
-    <%= render spin, object: spin %>
+    <%= render "artist_spin", spin: spin %>
 
   <% end %>
   </tbody>

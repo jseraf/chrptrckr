@@ -12,7 +12,8 @@
   <tbody>
   <% @spins.each do |spin| %>
 
-    <%= render :partial => 'spins/spin', object: spin %>
+    <%= render "spins/spin", spin: spin %>
+    <%# render :partial => 'spins/spin', object: spin %>
 
   <% end %>
   </tbody>

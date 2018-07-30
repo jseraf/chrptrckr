@@ -7,16 +7,12 @@
     <th>Song</th>
     <th>Release</th>
     <th>Label</th>
+    <th>Played at</th>
   </thead>
   <tbody>
   <% @spins.each do |spin| %>
 
-    <tr>
-      <td><%= link_to spin.artist.name, artist_path(spin.artist) %></td>
-      <td><%= spin.track %></td>
-      <td><%= spin.release %></td>
-      <td><%= spin.label.name %></td>
-    </tr>
+    <%= render "spin", spin: spin %>
 
   <% end %>
   </tbody>
