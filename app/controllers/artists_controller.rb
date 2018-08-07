@@ -5,7 +5,7 @@ class ArtistsController < ApplicationController
   end
 
   def show
-    @artist       = Artist.find(params[:id])
+    @artist       = Artist.friendly.find(params[:id])
     @pagy, @spins = pagy(Spin.where(artist: @artist).with_label.recent)
   end
 

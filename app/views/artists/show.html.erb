@@ -1,7 +1,7 @@
 <% provide(:title_tag, "Recently played by #{@artist.name}") %>
 
 <h1><%= "#{@artist.name}" %></h1>
-<p>Last.fm bio / pic to go here</p>
+<p><%= simple_format(@artist.lastfm_bio) %></p>
 
 <div class="play_info">
   <h2>Played:</h2>
@@ -14,6 +14,8 @@
     <dd><%= this_week_count %></dd>
     <dt>This Month:</dt>
     <dd><%= this_month_count %></dd>
+    <dt>All Time:</dt>
+    <dd><%= "#{@artist.spins_count}" %></dd>
   </dl>
 </div>
 

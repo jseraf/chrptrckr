@@ -5,21 +5,16 @@
 #         1: from app/services/lastfm_search.rb:20:in `album'
 
 class LastfmSearch
+  # artist only for now
 
-  attr_accessor :search_params, :search_type, :wrapper
 
   def self.call search_type, search_hash
-    token   = Rails.application.credentials.lastfm[:token]
-    api_key = Rails.application.credentials.lastfm[:api_key]
+    token       = Rails.application.credentials.lastfm[:token]
+    api_key     = Rails.application.credentials.lastfm[:api_key]
+    search_hash[:limit] = 1
 
-    wrapper = Lastfm.new(api_key, token)
-
-    case search_type
-    when 'album'
-      album (search_hash)
-    else
-      return_nil
-    end
+    wrapper     = Lastfm.new(api_key, token)
+    wrapper.send(search_type).get_info(search_hash)
   end
 
   private
