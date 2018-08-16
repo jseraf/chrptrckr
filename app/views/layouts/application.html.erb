@@ -14,7 +14,13 @@
   </head>
 
   <body>
+
     <%= (link_to '< Home', root_path) unless current_page?(root_path) %>
+
+    <% if flash[:alert] %>
+      <div class="alert"><%= flash[:alert] %></div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

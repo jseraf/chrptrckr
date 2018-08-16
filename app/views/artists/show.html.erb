@@ -1,7 +1,10 @@
 <% provide(:title_tag, "Recently played by #{@artist.name}") %>
 
 <h1><%= "#{@artist.name}" %></h1>
+
 <p><%= simple_format(@artist.lastfm_bio) %></p>
+
+<%= render "artist_links" if (@artist.lastfm_url.present? || @artist.discogs_url.present? ) %>
 
 <div class="play_info">
   <h2>Played:</h2>

@@ -5,8 +5,13 @@ class ArtistsController < ApplicationController
   end
 
   def show
-    @artist       = Artist.friendly.find(params[:id])
-    @pagy, @spins = pagy(Spin.where(artist: @artist).with_label.recent)
+    begin
+      @artist       = Artist.friendly.find(params[:id])
+    rescue
+      flash[:alert] = 'Artist not found.'
+      redirect_to root_url
+    end
+    @pagy, @spins   = pagy(Spin.where(artist: @artist).with_label.recent)
   end
 
 end
