@@ -1,0 +1,13 @@
+<div id="most-played">
+  <% ArtistHelper::SPIN_COUNT_SCOPES.each do |time_frame| %>
+    <div class="time">
+      <h2>Most Played <%= time_frame.titleize %></h2>
+      <dl>
+      <%= send("most_played_#{time_frame}").each do |artist, count| %>
+        <dt><%= link_to artist, artist_path(artist) %></dt>
+        <dd><%= count %></dd>
+      <% end %>
+      </dl>
+    </div>
+  <% end %>
+</div>

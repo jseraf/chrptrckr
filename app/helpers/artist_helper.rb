@@ -6,9 +6,13 @@ module ArtistHelper
     'this_month'
   ]
 
-  SPIN_COUNT_SCOPES.each do |time|
-    define_method "#{time}_count" do
-      @artist.spins.send("played_#{time}").count
+  SPIN_COUNT_SCOPES.each do |time_frame|
+    define_method "#{time_frame}_count" do
+      @artist.spins.send("played_#{time_frame}").count
+    end
+
+    define_method "most_played_#{time_frame}" do
+      Artist.joins(:spins).merge(Spin.send("played_#{time_frame}")).group(:name).count.sort_by { |artist,count| count }.reverse.take(10).to_h
     end
   end
 end
