@@ -6,7 +6,7 @@ class Artist < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  after_create :lastfm
+  after_create :lastfm, :discogs
 
   def should_generate_new_friendly_id?
     new_record? || slug.blank?
@@ -14,10 +14,18 @@ class Artist < ApplicationRecord
 
   private
     def lastfm
-      search_results = LastfmSearch.call('artist', { artist: self.name } )
-      if search_results.any?
-        self.lastfm_url = search_results["url"]
-        self.lastfm_bio = search_results["bio"]["content"] #unless strip_links(content).strip.eql? 'Read more on Last.fm'
+      lastfm_results = LastfmSearch.call('artist', { artist: self.name } )
+      if lastfm_results.any?
+        self.lastfm_url = lastfm_results["url"]
+        self.lastfm_bio = lastfm_results["bio"]["content"]
+        self.save
+      end
+    end
+
+    def discogs
+      discogs_results = DiscogsSearch.call('artist', self.name)
+      if discogs_results.results.first.any?
+        self.discogs_url = "http://discogs.com#{discogs_results.results.first.uri}"
         self.save
       end
     end

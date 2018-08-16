@@ -16,7 +16,7 @@ class RetrieveSpinService
     now_playing = @spin['now_playing']
 
     dj_id     = Dj.find_or_create_by(name: now_playing['dj'])
-    artist_id = Artist.find_or_create_by(name: now_playing['artist'])
+    artist_id = Artist.where(slug: now_playing['artist'].parameterize).first_or_create(name: now_playing['artist'])
     label_id  = Label.find_or_create_by(name: now_playing['label'])
 
     Spin.create(dj:              dj_id,
