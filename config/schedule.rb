@@ -3,9 +3,9 @@
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
-every 90.seconds do
+every 1.minute do
   # runner "RetrieveSpinService.call", :output => {:error => '/Users/jds021/workspace/chrptrckr/log/cron_error.log', :standard => '/Users/jds021/workspace/chrptrckr/log/cron.log'}
-  rake "spin:retrieve"
+  rake 'spin:retrieve'
 end
 
 # Example:
