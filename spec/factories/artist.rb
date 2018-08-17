@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :artist do
-    name "Artist100"
+    name { "Artist100" }
   end
 end
