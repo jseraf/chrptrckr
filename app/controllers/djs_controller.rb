@@ -1,4 +1,5 @@
 class DjsController < ApplicationController
+
   def index
     @pagy, @djs = pagy(Dj.all)
   end

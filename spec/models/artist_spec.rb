@@ -16,7 +16,7 @@ RSpec.describe Artist do
   it 'requires a name' do
     artist = Artist.new
     expect(artist).not_to be_valid
-    artist.name = 'Artist100'
+    artist.name = 'ABC'
     expect(artist).to be_valid
   end
 

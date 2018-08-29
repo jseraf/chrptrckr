@@ -15,7 +15,10 @@ class Artist < ApplicationRecord
 
   private
     def lastfm
-      lastfm_results = LastfmSearch.call('artist', { artist: self.name } )
+      lastfm_results = LastfmSearch.call(
+                          search_type: 'artist',
+                          search_hash: { artist: self.name }
+                        )
       if lastfm_results.present?
         self.lastfm_url = lastfm_results["url"]
         self.lastfm_bio = lastfm_results["bio"]["content"]
@@ -23,7 +26,10 @@ class Artist < ApplicationRecord
     end
 
     def discogs
-      discogs_results = DiscogsSearch.call('artist', self.name)
+      discogs_results = DiscogsSearch.call(
+                          search_type: 'artist',
+                          search_term: self.name
+                        )
       if discogs_results.results.first.present?
         self.discogs_url = "http://discogs.com#{discogs_results.results.first.uri}"
       end
