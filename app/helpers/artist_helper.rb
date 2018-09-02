@@ -3,7 +3,8 @@ module ArtistHelper
     'today',
     'yesterday',
     'this_week',
-    'this_month'
+    'this_month',
+    'last_month'
   ]
 
   SPIN_COUNT_SCOPES.each do |time_frame|

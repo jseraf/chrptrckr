@@ -14,5 +14,9 @@ class Spin < ApplicationRecord
   scope :played_today,      -> { where("played_at > ?", Date.today.beginning_of_day) }
   scope :played_yesterday,  -> { where("played_at > ? AND played_at < ?", Date.today.beginning_of_day - 1.day, Date.today.end_of_day - 1.day ) }
   scope :played_this_week,  -> { where("played_at > ?", Date.today.beginning_of_week.beginning_of_day ) }
+  scope :played_last_week,  -> { where("played_at > ? AND played_at < ?", Date.last_week.beginning_of_week, Date.last_week.end_of_week.end_of_week) }
   scope :played_this_month, -> { where("played_at > ?", Date.today.beginning_of_month.beginning_of_day ) }
+  scope :played_last_month, -> { where("played_at > ? AND played_at < ?", Date.today.last_month.beginning_of_month.beginning_of_day, Date.today.last_month.end_of_month.end_of_day ) }
+  # dj
+  scope :by_dj,             -> (dj_id ) { where("dj_id = (?)", dj_id) }
 end
