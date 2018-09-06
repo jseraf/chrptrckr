@@ -9,7 +9,7 @@ class RetrieveSpinService
   private
 
   def self.duplicate?
-    @spin['now_playing']['id'] == Spin.pluck('chirp_id').last
+    Spin.where('chirp_id = ?', @spin['now_playing']['id']).count.positive?
   end
 
   def self.process_spin
@@ -31,5 +31,4 @@ class RetrieveSpinService
                 chirp_id:           now_playing['id'])
 
   end
-
 end

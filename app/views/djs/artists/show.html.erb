@@ -4,7 +4,7 @@
   <%= link_to "Back to #{@dj.name}'s page", dj_path(@dj) %>
 </p>
 
-<h1>Songs by <%= link_to @artist.name, artist_path(@artist) %> played by <%= "#{@dj.name}" %></h1>
+<h1>Songs by <%= link_to @artist.name, artist_path(@artist) %> played by <%= link_to @dj.name, dj_path(@dj) %></h1>
 
 <table>
   <thead>
@@ -15,7 +15,6 @@
   </thead>
   <tbody>
   <% @spins.each do |spin| %>
-
     <%= render "spins/spin", spin: spin %>
     <%# render :partial => 'spins/spin', object: spin %>
 

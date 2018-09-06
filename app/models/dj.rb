@@ -1,8 +1,15 @@
 class Dj < ApplicationRecord
+  extend FriendlyId
+
+  friendly_id :name, use: [:finders, :slugged]
 
   has_many :spins
 
   validates :name, presence: true, uniqueness: true
+
+  def should_generate_new_friendly_id?
+    new_record? || slug.blank?
+  end
 
   SPIN_COUNT_SCOPES = [
     'this_month',

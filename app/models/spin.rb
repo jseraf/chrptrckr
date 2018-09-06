@@ -19,4 +19,6 @@ class Spin < ApplicationRecord
   scope :played_last_month, -> { where("played_at > ? AND played_at < ?", Date.today.last_month.beginning_of_month.beginning_of_day, Date.today.last_month.end_of_month.end_of_day ) }
   # dj
   scope :by_dj,             -> (dj_id ) { where("dj_id = (?)", dj_id) }
+
+  validates_uniqueness_of :chirp_id, message: 'with this chirp_id has already been saved.'
 end

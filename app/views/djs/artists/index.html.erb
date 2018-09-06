@@ -1,5 +1,5 @@
 <% provide(:title_tag, 'Artists Played') %>
-<h1>Artists played by <%= "#{@dj}" %></h1>
+<h1>Artists played by <%= "#{@dj.name}" %></h1>
 
 <table>
   <thead>
@@ -10,7 +10,7 @@
   <% @artists.each do |artist| %>
     <tr>
       <td><%= link_to artist.name, artist_path(artist) %></td>
-      <td>edit / delete</td>
+      <td>Link to DJ's plays?</td>
     </tr>
   <% end %>
   </tbody>

@@ -4,7 +4,6 @@ class Djs::ArtistsController < DjsController
   def index
     @dj = Dj.find(params[:dj_id])
     @pagy, @artists = pagy( Artist.joins(:spins).merge(Spin.with_artist.by_dj(@dj)))
-    render "djs/artists/index"
   end
 
   def show
