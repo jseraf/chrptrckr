@@ -1,0 +1,19 @@
+<% provide(:title_tag, 'Artists Played') %>
+<h1>Artists played by <%= "#{@dj}" %></h1>
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+  <% @artists.each do |artist| %>
+    <tr>
+      <td><%= link_to artist.name, artist_path(artist) %></td>
+      <td>edit / delete</td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= pagy_nav(@pagy).html_safe %>

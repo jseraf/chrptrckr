@@ -19,16 +19,16 @@ class RetrieveSpinService
     artist_id = Artist.where(slug: now_playing['artist'].parameterize).first_or_create(name: now_playing['artist'])
     label_id  = Label.find_or_create_by(name: now_playing['label'])
 
-    Spin.create(dj:              dj_id,
-                artist:          artist_id,
-                artist_is_local: now_playing['artist_is_local'],
-                track:           now_playing['track'],
-                release:         now_playing['release'],
-                label:           label_id,
-                notes:           now_playing['notes'],
+    Spin.create(dj:                 dj_id,
+                artist:             artist_id,
+                artist_is_local:    now_playing['artist_is_local'],
+                track:              now_playing['track'],
+                release:            now_playing['release'],
+                label:              label_id,
+                notes:              now_playing['notes'],
                 lastfm_large_image: now_playing['lastfm_urls']['large_image'],
-                played_at:       now_playing['played_at_local'],
-                chirp_id:        now_playing['id'])
+                played_at:          now_playing['played_at_local'],
+                chirp_id:           now_playing['id'])
 
   end
 

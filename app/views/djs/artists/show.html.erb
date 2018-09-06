@@ -1,8 +1,10 @@
 <% provide(:title_tag, "Recently played #{@dj.name}") %>
 
-<%= render 'most_played' %>
+<p>
+  <%= link_to "Back to #{@dj.name}'s page", dj_path(@dj) %>
+</p>
 
-<h1>Recently Played by <%= "#{@dj.name}" %></h1>
+<h1>Songs by <%= link_to @artist.name, artist_path(@artist) %> played by <%= "#{@dj.name}" %></h1>
 
 <table>
   <thead>
