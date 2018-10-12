@@ -1,7 +1,8 @@
 class Spin < ApplicationRecord
 
-  belongs_to :dj, touch: true
+  belongs_to :dj, touch: true, counter_cache: true
   belongs_to :artist, touch: true, counter_cache: true
+  belongs_to :release, touch: true, counter_cache: true
   belongs_to :label
 
   #SCOPES

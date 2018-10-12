@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_223646) do
+ActiveRecord::Schema.define(version: 2018_10_12_161829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_223646) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.integer "spins_count", default: 0
     t.index ["name"], name: "index_djs_on_name"
     t.index ["slug"], name: "index_djs_on_slug", unique: true
   end
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_223646) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "spins_count", default: 0
   end
 
   create_table "spins", force: :cascade do |t|
@@ -67,7 +69,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_223646) do
     t.bigint "artist_id"
     t.boolean "artist_is_local", default: false
     t.string "track"
-    t.string "release"
+    t.bigint "release_id"
     t.bigint "label_id"
     t.text "notes"
     t.string "lastfm_large_image"
@@ -78,8 +80,10 @@ ActiveRecord::Schema.define(version: 2018_09_23_223646) do
     t.index ["artist_id"], name: "index_spins_on_artist_id"
     t.index ["dj_id"], name: "index_spins_on_dj_id"
     t.index ["label_id"], name: "index_spins_on_label_id"
+    t.index ["release_id"], name: "index_spins_on_release_id"
   end
 
   add_foreign_key "spins", "artists"
   add_foreign_key "spins", "djs"
+  add_foreign_key "spins", "releases"
 end
