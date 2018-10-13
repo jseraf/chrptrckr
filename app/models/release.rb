@@ -1,5 +1,8 @@
 class Release < ApplicationRecord
+  belongs_to :artist
   has_many :spins
+
+  before_create
 
   # artist_id
   # year

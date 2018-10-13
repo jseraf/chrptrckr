@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_12_204616) do
+ActiveRecord::Schema.define(version: 2018_10_13_144519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,9 @@ ActiveRecord::Schema.define(version: 2018_10_12_204616) do
     t.datetime "updated_at", null: false
     t.integer "spins_count", default: 0
     t.bigint "artist_id"
+    t.bigint "discogs_id"
+    t.string "discogs_img"
+    t.integer "year", limit: 2
     t.index ["artist_id"], name: "index_releases_on_artist_id"
   end
 
