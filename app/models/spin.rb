@@ -10,7 +10,10 @@ class Spin < ApplicationRecord
   # includes
   scope :with_artist,       -> { includes :artist }
   scope :with_label,        -> { includes :label }
+  scope :with_release,      -> { includes :release }
   scope :with_artist_label, -> { with_artist.with_label }
+  scope :with_release_label,-> { with_release.with_label }
+  scope :with_artist_release_label, -> { with_artist.with_release.with_label }
   # time-related
   scope :played_today,      -> { where("played_at > ?", Date.today.beginning_of_day) }
   scope :played_yesterday,  -> { where("played_at > ? AND played_at < ?", Date.today.beginning_of_day - 1.day, Date.today.end_of_day - 1.day ) }

@@ -11,7 +11,7 @@ class ArtistsController < ApplicationController
       flash[:alert] = 'Artist not found.'
       redirect_to root_url
     end
-    @pagy, @spins   = pagy(Spin.where(artist: @artist).with_label.recent)
+    @pagy, @spins   = pagy(Spin.where(artist: @artist).with_release_label.recent)
   end
 
 end

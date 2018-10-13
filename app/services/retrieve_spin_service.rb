@@ -15,15 +15,16 @@ class RetrieveSpinService
   def self.process_spin
     now_playing = @spin['now_playing']
 
-    dj_id     = Dj.find_or_create_by(name: now_playing['dj'])
-    artist_id = Artist.where(slug: now_playing['artist'].parameterize).first_or_create(name: now_playing['artist'])
-    label_id  = Label.find_or_create_by(name: now_playing['label'])
+    dj_id      = Dj.find_or_create_by(name: now_playing['dj'])
+    artist_id  = Artist.where(slug: now_playing['artist'].parameterize).first_or_create(name: now_playing['artist'])
+    release_id = Release.find_or_create_by(artist_id: artist_id, title: now_playing['release']) #Release.where(artist_id: artist_id, title: now_playing['release']).first_or_create
+    label_id   = Label.find_or_create_by(name: now_playing['label'])
 
     Spin.create(dj:                 dj_id,
                 artist:             artist_id,
                 artist_is_local:    now_playing['artist_is_local'],
                 track:              now_playing['track'],
-                release:            now_playing['release'],
+                release:            release_id, # now_playing['release']
                 label:              label_id,
                 notes:              now_playing['notes'],
                 lastfm_large_image: now_playing['lastfm_urls']['large_image'],
