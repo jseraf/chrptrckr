@@ -2,7 +2,7 @@
 
 <h1><%= "#{@artist.name}" %></h1>
 
-<p><%= simple_format(@artist.lastfm_bio) %></p>
+<p><%= simple_format(@artist.lastfm_bio) if @artist.lastfm_bio.present? %></p>
 
 <%= render "artist_links" if (@artist.lastfm_url.present? || @artist.discogs_url.present? ) %>
 

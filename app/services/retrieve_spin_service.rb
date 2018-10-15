@@ -35,8 +35,8 @@ class RetrieveSpinService
 
   def self.get_or_create_release artist, spin
     discogs_results = self.get_discogs_release_info(spin).first
-    case discogs_results.any?
-    when true
+    case discogs_results.nil?
+    when false
       Release.find_or_create_by(artist: artist,
                                 title: spin['release'],
                                 discogs_id: discogs_results.id,

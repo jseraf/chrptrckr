@@ -1,0 +1,25 @@
+
+<h3><%= link_to @artist.name, artist_path(@artist) %> - <%= "#{@release.title}" %></h3>
+
+<div>
+  <%= image_tag @release.discogs_img, alt: "#{@artist.name} - #{@release.title}" if @release.discogs_img.present? %>
+</div>
+
+<div>
+  Played: <%= pluralize(@release.spins_count, 'time', 'times') %> since <%= @release.created_at %>
+</div>
+
+<table>
+  <thead>
+    <th>Artist</th>
+    <th>Song</th>
+    <th>Release</th>
+    <th>Label</th>
+  </thead>
+  <tbody>
+  <% @spins.each do |spin| %>
+    <%= render "spins/spin", spin: spin %>
+    <%# render :partial => 'spins/spin', object: spin %>
+  <% end %>
+  </tbody>
+</table>
