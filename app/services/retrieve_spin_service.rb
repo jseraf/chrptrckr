@@ -16,7 +16,7 @@ class RetrieveSpinService
     now_playing = @spin['now_playing']
 
     dj      = Dj.find_or_create_by(name: now_playing['dj'])
-    artist  = Artist.where(slug: now_playing['artist'].parameterize).first_or_create(name: now_playing['artist'])
+    artist  = get_or_create_artist(now_playing['artist'])
     release = get_or_create_release(artist, now_playing) # Release.find_or_create_by(artist_id: artist_id, title: now_playing['release'])
     label   = Label.find_or_create_by(name: now_playing['label'])
 
@@ -31,6 +31,14 @@ class RetrieveSpinService
                 played_at:          now_playing['played_at_local'],
                 chirp_id:           now_playing['id'])
 
+  end
+
+  def self.get_or_create_artist artist
+    if artist.parameterize.blank?
+      Artist.where(name: artist).first_or_create(name: artist)
+    else
+      Artist.where(slug: artist.parameterize).first_or_create(name: artist)
+    end
   end
 
   def self.get_or_create_release artist, spin

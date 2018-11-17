@@ -6,6 +6,6 @@ module ApplicationHelper
   end
 
   def format_spin_date time
-    time.strftime("%l:%M%P on %-m/%d/%y ")
+    time.strftime("%-m/%d/%y at %l:%M%P")
   end
 end
