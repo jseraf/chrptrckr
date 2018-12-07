@@ -18,5 +18,6 @@ module Chrptrckr
 
     # time
     config.time_zone = 'Central Time (US & Canada)'
+    config.beginning_of_week = :sunday
   end
 end
