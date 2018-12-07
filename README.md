@@ -10,16 +10,16 @@ Bundler >= 1.16.1
 
 # INSTALL
 
-Edit config/database.yml as needed
-Open terminal / command line and cd into directory
-Run `bundle install`
-Run `rake db:setup`
-Run `rails s` to start server
-Visit http://localhost:3000
+- Edit config/database.yml as needed
+- Open terminal / command line and cd into directory
+- Run `bundle install`
+- Run `rake db:setup`
+- Run `rails s` to start server
+- Visit http://localhost:3000
 
 # CRON
 
-ChrpTrcker uses the whenever gem to retrieve DJ spins every minute.
+ChrpTrcker uses the whenever gem to retrieve DJ spins every minute using the `rake spin:retrieve` task (which can also be run from the command line).
 
 Edit config/schedule.rb to change this.
 

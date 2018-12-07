@@ -17,28 +17,28 @@ class Spin < ApplicationRecord
   scope :with_artist_release_label, -> { with_artist.with_release.with_label }
 
   # time-related
-  scope :played_today,      -> {
+  scope :played_today,     -> {
     where(played_at: Time.zone.now.beginning_of_day..Time.zone.now)
   }
-  scope :played_yesterday,  -> {
-    starting = Time.zone.now.yesterday
-    where(played_at: starting.beginning_of_day..starting.end_of_day )
+  scope :played_yesterday, -> {
+    start = Time.zone.now.yesterday
+    where(played_at: start.beginning_of_day..start.end_of_day )
   }
-  scope :played_this_week,  -> {
-    starting = Time.zone.now.beginning_of_week
-    where(played_at: starting..starting.end_of_week )
+  scope :played_this_week, -> {
+    start = Time.zone.now.beginning_of_week
+    where(played_at: start..start.end_of_week )
   }
-  scope :played_last_week,  -> {
-    beginning = Time.zone.now.last_week
-    where(played_at: beginning..beginning.end_of_week)
+  scope :played_last_week, -> {
+    start = Time.zone.now.last_week
+    where(played_at: start..start.end_of_week)
   }
-  scope :played_this_month, -> {
-    beginning = Time.zone.now.beginning_of_month
-    where(played_at: Time.zone.now.beginning_of_month..beginning.end_of_month )
+  scope :played_this_month,-> {
+    start = Time.zone.now.beginning_of_month
+    where(played_at: start..start.end_of_month )
   }
-  scope :played_last_month, -> {
-    beginning = Time.zone.now.last_month.beginning_of_month
-    where(played_at: beginning..beginning.end_of_month )
+  scope :played_last_month,-> {
+    start = Time.zone.now.last_month.beginning_of_month
+    where(played_at: start..start.end_of_month )
   }
 
   # dj
