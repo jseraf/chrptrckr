@@ -4,8 +4,11 @@
 # http://en.wikipedia.org/wiki/Cron
 
 every 1.minute do
-  # runner "RetrieveSpinService.call", :output => {:error => '/Users/jds021/workspace/chrptrckr/log/cron_error.log', :standard => '/Users/jds021/workspace/chrptrckr/log/cron.log'}
   rake 'spin:retrieve'
+end
+
+every 7.days do
+  rake 'artists:external_links'
 end
 
 # Example:

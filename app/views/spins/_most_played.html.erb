@@ -4,7 +4,7 @@
       <h2>Most Played <%= time_frame.titleize %></h2>
       <dl>
       <% send("most_played_#{time_frame}").each do |artist, count| %>
-        <dt><%= link_to artist, artist_path(artist) %></dt>
+        <dt><%= link_to artist[0], artist_path(artist[1]) %></dt>
         <dd><%= count %></dd>
       <% end %>
       </dl>
