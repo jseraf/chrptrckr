@@ -23,6 +23,9 @@ class Artist < ApplicationRecord
     return unless lastfm_results.present?
 
     self.lastfm_url = lastfm_results['url']
+
+    return if lastfm_results['bio']['content'] == '{}'
+
     self.lastfm_bio = lastfm_results['bio']['content']
   end
 
