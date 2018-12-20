@@ -45,5 +45,7 @@ class Spin < ApplicationRecord
   # dj
   scope :by_dj, -> (dj_id ) { where('dj_id = ?', dj_id) }
 
+  ransack_alias :spin, :track_or_artist_name
+
   validates_uniqueness_of :chirp_id, message: UNIQUE_ERROR_MESSAGE
 end
