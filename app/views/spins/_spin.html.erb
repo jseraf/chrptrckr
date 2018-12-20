@@ -3,5 +3,5 @@
       <td class="track"><%= spin.track %></td>
       <td class="release"><%= link_to spin.release.title, artist_release_path(spin.artist, spin.release) %></td>
       <td class="label"><%= spin.label.name %></td>
-      <td class="time"><%= format_spin_date spin.played_at %></td>
+      <td class="time"><%= format_date_time spin.played_at %></td>
     </tr>

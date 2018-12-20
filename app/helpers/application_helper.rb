@@ -5,7 +5,7 @@ module ApplicationHelper
     " | #{page_title_text}" unless page_title_text.empty?
   end
 
-  def format_spin_date time
+  def format_date_time time
     time.strftime("%-m/%d/%y at %l:%M%P")
   end
 end

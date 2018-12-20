@@ -6,7 +6,7 @@
 </div>
 
 <div>
-  Played: <%= pluralize(@release.spins_count, 'time', 'times') %> since <%= @release.created_at %>
+  Played: <%= pluralize(@release.spins_count, 'time', 'times') %> since <%= format_date_time(@release.created_at) %>
 </div>
 
 <table>
