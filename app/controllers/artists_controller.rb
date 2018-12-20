@@ -1,6 +1,13 @@
 class ArtistsController < ApplicationController
   def index
-    @pagy, @artists = pagy(Artist.all)
+    @q = Artist.ransack(params[:q])
+    case @q.result.count
+    when 1
+      artist_id = @q.result.first.id
+      redirect_to artist_path(artist_id)
+    else
+      @pagy, @artists = pagy(@q.result)
+    end
   end
 
   def show

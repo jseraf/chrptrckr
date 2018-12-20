@@ -1,7 +1,14 @@
 class DjsController < ApplicationController
 
   def index
-    @pagy, @djs = pagy(Dj.all)
+    @q = Dj.ransack(params[:q])
+    case @q.result.count
+    when 1
+      dj_id = @q.result.first.id
+      redirect_to dj_path(dj_id)
+    else
+      @pagy, @djs = pagy(@q.result)
+    end
   end
 
   def show

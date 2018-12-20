@@ -1,7 +1,6 @@
 module ArtistHelper
   SPIN_COUNT_SCOPES = %w[
     today
-    yesterday
     this_week
     this_month
     last_month

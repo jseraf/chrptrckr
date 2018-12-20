@@ -1,6 +1,9 @@
-<% provide :title_tag, 'Recently Played' %>
-<h1>Recently Played</h1>
-
+<% provide :title_tag, 'DJs' %>
+<h1>DJs</h1>
+<%= search_form_for @q do |f| %>
+  <%= f.search_field :name_cont, placeholder: 'Search by name' %>
+  <%= f.submit %>
+<% end %>
 <table>
   <thead>
     <th>Name</th>

@@ -1,6 +1,6 @@
 <% provide(:title_tag, "Recently played #{@dj.name}") %>
 
-<%= render 'most_played' if @dj.most_played_artist_last_month.any? %>
+<%= render 'most_played' if @dj.most_played_artist.any? %>
 
 <h1>Recently Played by <%= "#{@dj.name}" %></h1>
 

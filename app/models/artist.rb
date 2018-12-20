@@ -9,6 +9,8 @@ class Artist < ApplicationRecord
 
   before_save :lastfm, :discogs
 
+  scope :alphabetical, -> { order(:name) }
+
   def should_generate_new_friendly_id?
     new_record? || slug.blank?
   end
@@ -17,9 +19,9 @@ class Artist < ApplicationRecord
 
   def lastfm
     lastfm_results = LastfmSearch.call(
-                                    search_type: 'artist',
-                                    search_hash: { artist: name }
-                                  )
+                       search_type: 'artist',
+                       search_hash: { artist: name }
+                     )
     return unless lastfm_results.present?
 
     self.lastfm_url = lastfm_results['url']
