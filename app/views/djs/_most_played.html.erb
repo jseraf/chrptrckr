@@ -1,7 +1,6 @@
 <div id="most-played">
-  <%# ['last_month','this_month'].each do |time_frame| %>
     <div class="time">
-      <h2>Most Played Last Month</h2>
+      <h2>Most Played Artist</h2>
       <dl>
       <% @dj.most_played_artist.each do |artist, count| %>
         <dt><%= link_to artist, dj_artist_path(@dj, artist.parameterize) %></dt>
@@ -9,5 +8,4 @@
       <% end %>
       </dl>
     </div>
-  <%# end %>
 </div>
