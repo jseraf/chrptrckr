@@ -1,9 +1,9 @@
 class DjsController < ApplicationController
 
   def index
-    @q = Dj.ransack(params[:q])
-    case @q.result.count
-    when 1
+    @q = Dj.recent.ransack(params[:q])
+    case @q.result.one?
+    when true
       dj_id = @q.result.first.id
       redirect_to dj_path(dj_id)
     else

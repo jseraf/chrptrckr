@@ -51,6 +51,13 @@ gem 'pagy'
 # search
 gem 'ransack'
 
+# decorators
+gem 'draper'
+
+# foundation
+gem 'autoprefixer-rails'
+gem 'foundation-rails'
+gem 'sprockets-es6'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

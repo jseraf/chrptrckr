@@ -5,6 +5,8 @@ class Dj < ApplicationRecord
 
   has_many :spins
 
+  scope :recent, -> { order(updated_at: :desc) }
+
   validates :name, presence: true, uniqueness: true
 
   def should_generate_new_friendly_id?

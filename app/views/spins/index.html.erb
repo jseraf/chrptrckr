@@ -1,6 +1,6 @@
 <% provide :title_tag, 'Recently Played' %>
 
-<%= search_form_for @q do |f| %>
+<%= search_form_for @q, method: :post, url: search_spins_path do |f| %>
   <%= f.search_field :spin_cont, placeholder: 'Search artist or song' %>
   <%= f.submit %>
 <% end %>
@@ -16,11 +16,9 @@
   </thead>
   <tbody>
   <% @spins.each do |spin| %>
-
     <%= render 'spin', spin: spin %>
-
   <% end %>
   </tbody>
 </table>
 
-<%= pagy_nav(@pagy).html_safe %>
+<%= pagy_foundation_nav(@pagy).html_safe %>

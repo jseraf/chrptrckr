@@ -8,7 +8,19 @@ class RetrieveSpinService
   private
 
   def self.duplicate?
+    return true if self.spin_id_is_duplicate?
+    return true if self.last_spin_is_duplicate?
+  end
+
+  def self.spin_id_is_duplicate?
     Spin.where('chirp_id = ?', @spin['now_playing']['id']).count.positive?
+  end
+
+  def self.last_spin_is_duplicate?
+    last_spin = Spin.with_artist.last
+    @spin['artist'] == last_spin.artist.name &&
+      @spin['track'] == last_spin.track &&
+      @spin['label'] == last_spin.label
   end
 
   def self.process_spin

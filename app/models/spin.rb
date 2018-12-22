@@ -7,7 +7,7 @@ class Spin < ApplicationRecord
   belongs_to :label
 
   #SCOPES
-  scope :recent,            -> { order( played_at: :desc ) }
+  scope :recent,            -> { order(played_at: :desc) }
 
   # includes
   scope :with_artist,       -> { includes :artist }

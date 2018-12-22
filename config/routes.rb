@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :releases
   resources :labels
-  resources :spins
+  resources :spins do
+    collection do
+      post 'search', controller: 'spins/search'
+    end
+  end
   resources :djs, only: %i[index show] do
     resources :artists, on: :member, only: %i[index show], controller: 'djs/artists'
   end

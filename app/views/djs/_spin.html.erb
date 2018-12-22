@@ -2,6 +2,6 @@
       <td class="artist"><%= link_to spin.artist.name, dj_artist_path(@dj, spin.artist), title: "#{spin.artist.name} songs played by #{@dj.name}" %></td>
       <td class="track"><%= spin.track %></td>
       <td class="release"><%= link_to spin.release.title, artist_release_path(spin.release.artist, spin.release) %></td>
-      <td class="label"><%= spin.label.name %></td>
+      <td class="record-label"><%= spin.label.name %></td>
       <td class="time"><%= format_date_time spin.played_at %></td>
     </tr>
