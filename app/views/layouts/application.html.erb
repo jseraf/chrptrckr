@@ -16,16 +16,25 @@
   </head>
 
   <body>
-
-    <%= link_to '< Home', root_path unless current_page?(root_path) %>
-    <%= link_to 'Artists', artists_path unless current_page?(artists_path) %>
-    <%= link_to 'DJs', djs_path unless current_page?(djs_path) %>
-    <%= link_to 'Most Played', most_played_path %>
-
-    <% if flash[:alert] %>
-      <div class="alert"><%= flash[:alert] %></div>
-    <% end %>
-
-    <%= yield %>
+    <div class="grid-container">
+      <div id="responsive-menu" class="top-bar">
+          <nav class="table-bar-left">
+            <ul class="vertical medium-horizontal menu">
+              <li<%= " class=\"is-active\"" if current_page?(root_path)%>><%= link_to '< Home', root_path %></li>
+              <li<%= " class=\"is-active\"" if current_page?(artists_path)%>><%= link_to 'Artists', artists_path %></li>
+              <li<%= " class=\"is-active\"" if current_page?(djs_path)%>><%= link_to 'DJs', djs_path %></li>
+              <li<%= " class=\"is-active\"" if current_page?(most_played_path)%>><%= link_to 'Most Played', most_played_path %></li>
+            </ul>
+          </nav>
+      </div>
+      <% if flash[:alert] %>
+        <div class="callout alert"><%= flash[:alert] %></div>
+      <% end %>
+      <div class="grid-x grid-margin-x grid-margin-y">
+        <main class="cell">
+          <%= yield %>
+        </main>
+      </div>
+  </div>
   </body>
 </html>

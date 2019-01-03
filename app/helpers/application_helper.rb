@@ -6,6 +6,6 @@ module ApplicationHelper
   end
 
   def format_date_time time
-    time.strftime("%-m/%d/%y at %l:%M%P")
+    time.strftime("%-m/%-d/%y at %l:%M%P")
   end
 end

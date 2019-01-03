@@ -3,10 +3,10 @@ class Artists::ReleasesController < ArtistsController
   before_action :set_release, only: :show
 
   def show
-    @pagy, @spins = pagy(Spin.where(artist: @artist,
-                                    release: @release)
-                             .with_release_label
-                             .recent)
+    @pagy, @spins = pagy(Spin.where(artist: @artist,release: @release)
+                           .with_release_label
+                           .recent)
+    @spins = SpinDecorator.decorate_collection(@spins)
   end
 
   private
