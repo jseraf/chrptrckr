@@ -1,42 +1,56 @@
 <% provide(:title_tag, "Recently played by #{@artist.name}") %>
 
 <h1><%= "#{@artist.name}" %></h1>
-<div class="cell small-12 clearfix">
-  <div id="artist-data">
+<div id="artist-info" class="grid-x">
+  <div class="cell small-12 medium-2">
+
     <%= render "artist_links" if (@artist.lastfm_url.present? || @artist.discogs_url.present? ) %>
 
-    <div class="play_info">
-      <h3>Played:</h3>
-      <ul class="no-bullet">
-        <li>Today: <%= today_count %></li>
-        <li>This Week: <%= this_week_count %></li>
-        <li>This Month: <%= this_month_count %></li>
-        <li>Last Month: <%= last_month_count %></li>
-        <li>All Time: <%= "#{@artist.spins_count}" %></li>
-      </dl>
-    </div>
+      <div class="play_info">
+        <h3>Played:</h3>
+        <ul class="no-bullet">
+          <li>Today: <%= today_count %></li>
+          <li>This Week: <%= this_week_count %></li>
+          <li>This Month: <%= this_month_count %></li>
+          <li>Last Month: <%= last_month_count %></li>
+          <li>All Time: <%= "#{@artist.spins_count}" %></li>
+        </ul>
+      </div>
+
   </div>
-
-  <p><%= simple_format(@artist.lastfm_bio) if @artist.lastfm_bio.present? %></p>
+  <div class="cell small-12 medium-10">
+    <h4>LastFM Bio</h4>
+    <article id="bio" class="js-read-more">
+      <p><%= simple_format(@artist.lastfm_bio) if @artist.lastfm_bio.present? %></p>
+    </article>
+  </div>
 </div>
-<div id="artist-spins">
-  <h2>Recently Played</h2>
 
-  <table>
-    <thead>
-      <th>Song</th>
-      <th>Release</th>
-      <th>Label</th>
-      <th>Played</th>
-    </thead>
-    <tbody>
-    <% @spins.each do |spin| %>
+<div id="artist-spins" class="grid-x">
+  <div class="small-12">
+    <h2>Recently Played</h2>
 
-      <%= render "artist_spin", spin: spin %>
+    <table class="hover">
+      <thead>
+        <th>Song</th>
+        <th>Release</th>
+        <th>Label</th>
+        <th>Played</th>
+      </thead>
+      <tbody>
+      <% @spins.each do |spin| %>
 
-    <% end %>
-    </tbody>
-  </table>
+        <%= render "artist_spin", spin: spin %>
 
-  <%= pagy_foundation_nav(@pagy).html_safe %>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= pagy_foundation_nav(@pagy).html_safe %>
+  </div>
 </div>
+
+<script>
+  $('#bio').readmore({embedCSS: false,moreLink: '<a href="#">Show more of the   LastFM bio</a>'});
+</script>
+

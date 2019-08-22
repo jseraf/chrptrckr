@@ -30,11 +30,9 @@
       <% if flash[:alert] %>
         <div class="callout alert"><%= flash[:alert] %></div>
       <% end %>
-      <div class="grid-x grid-margin-x grid-margin-y">
-        <main class="cell">
-          <%= yield %>
-        </main>
-      </div>
+      <main class="grid-container">
+        <%= yield %>
+      </main>
   </div>
   </body>
 </html>

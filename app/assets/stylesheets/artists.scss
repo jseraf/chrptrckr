@@ -1,4 +1,4 @@
-#artist-data {
-  float: left;
-  margin: 0 2em 2em 1em;
+#bio + [data-readmore-toggle] + a,
+#bio[data-readmore] + a {
+  font-size: 1em;
 }
