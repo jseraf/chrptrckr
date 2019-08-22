@@ -23,10 +23,16 @@ RSpec.describe Spin, type: :model do
 
     # this is not an real scenario
     it 'creates a valid instance when DJ and Artist associations are set' do
+      byebug
       dj_john = create(:dj)
       artist  = create(:artist)
+      release = create(:release, artist: artist)
       label   = create(:label)
-      spin    = build(:spin, dj: dj_john, artist: artist, label: label)
+      spin    = build(:spin, dj: dj_john,
+                             artist: artist,
+                             release: release,
+                             label: label)
+
       expect(spin).to be_valid
     end
 

@@ -1,8 +1,10 @@
 <% provide(:title_tag, "Recently played #{@dj.name}") %>
 
+<h1><%= "#{@dj.name}" %></h1>
+
 <%= render 'most_played' if @dj.most_played_artist.any? %>
 
-<h1>Recently Played by <%= "#{@dj.name}" %></h1>
+<h2>Recently Played</h1>
 
 <table>
   <thead>
@@ -10,12 +12,11 @@
     <th>Song</th>
     <th>Release</th>
     <th>Label</th>
+    <th>Time</th>
   </thead>
   <tbody>
   <% @spins.each do |spin| %>
-
     <%= render "spin", spin: spin %>
-
   <% end %>
   </tbody>
 </table>

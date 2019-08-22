@@ -1,13 +1,15 @@
 
-<h3><%= link_to @artist.name, artist_path(@artist) %> - <%= "#{@release.title}" %></h3>
+<h2><%= link_to @artist.name, artist_path(@artist) %></h2>
+<h3><%= "#{@release.title}" %></h3>
+<h4><%= "#{@release.year}" %>
 
 <div>
   <%= image_tag @release.discogs_img, alt: "#{@artist.name} - #{@release.title}" if @release.discogs_img.present? %>
 </div>
 
-<div>
+<p>
   Played: <%= pluralize(@release.spins_count, 'time', 'times') %> since <%= format_date_time(@release.created_at) %>
-</div>
+</p>
 
 <table>
   <thead>

@@ -8,7 +8,7 @@
       <h3><%= time_frame.titleize %></h3>
       <dl>
       <% send("most_played_#{time_frame}").each do |artist, count| %>
-        <dt class="artist <%= cycle("odd", "even", name: "row_class") -%>"><%= link_to artist[0], artist_path(artist[1]) %></dt>
+        <dt class="artist"><%= link_to artist[0], artist_path(artist[1]) %></dt>
         <dd class="count"><%= count %></dd>
       <% end %>
       </dl>

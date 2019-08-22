@@ -1,43 +1,42 @@
 <% provide(:title_tag, "Recently played by #{@artist.name}") %>
 
 <h1><%= "#{@artist.name}" %></h1>
+<div class="cell small-12 clearfix">
+  <div id="artist-data">
+    <%= render "artist_links" if (@artist.lastfm_url.present? || @artist.discogs_url.present? ) %>
 
-<p><%= simple_format(@artist.lastfm_bio) if @artist.lastfm_bio.present? %></p>
+    <div class="play_info">
+      <h3>Played:</h3>
+      <ul class="no-bullet">
+        <li>Today: <%= today_count %></li>
+        <li>This Week: <%= this_week_count %></li>
+        <li>This Month: <%= this_month_count %></li>
+        <li>Last Month: <%= last_month_count %></li>
+        <li>All Time: <%= "#{@artist.spins_count}" %></li>
+      </dl>
+    </div>
+  </div>
 
-<%= render "artist_links" if (@artist.lastfm_url.present? || @artist.discogs_url.present? ) %>
-
-<div class="play_info">
-  <h2>Played:</h2>
-  <dl>
-    <dt>Today:</dt>
-    <dd><%= today_count %></dd>
-    <dt>This Week:</dt>
-    <dd><%= this_week_count %></dd>
-    <dt>This Month:</dt>
-    <dd><%= this_month_count %></dd>
-    <dt>Last Month:</dt>
-    <dd><%= last_month_count %></dd>
-    <dt>All Time:</dt>
-    <dd><%= "#{@artist.spins_count}" %></dd>
-  </dl>
+  <p><%= simple_format(@artist.lastfm_bio) if @artist.lastfm_bio.present? %></p>
 </div>
+<div id="artist-spins">
+  <h2>Recently Played</h2>
 
-<h1>Recently Played</h1>
+  <table>
+    <thead>
+      <th>Song</th>
+      <th>Release</th>
+      <th>Label</th>
+      <th>Played</th>
+    </thead>
+    <tbody>
+    <% @spins.each do |spin| %>
 
-<table>
-  <thead>
-    <th>Song</th>
-    <th>Release</th>
-    <th>Label</th>
-    <th>Played</th>
-  </thead>
-  <tbody>
-  <% @spins.each do |spin| %>
+      <%= render "artist_spin", spin: spin %>
 
-    <%= render "artist_spin", spin: spin %>
+    <% end %>
+    </tbody>
+  </table>
 
-  <% end %>
-  </tbody>
-</table>
-
-<%= pagy_foundation_nav(@pagy).html_safe %>
+  <%= pagy_foundation_nav(@pagy).html_safe %>
+</div>
