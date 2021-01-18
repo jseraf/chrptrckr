@@ -20,10 +20,8 @@ RSpec.describe Spin, type: :model do
   end
 
   context 'saving a spin' do
-
     # this is not an real scenario
     it 'creates a valid instance when DJ and Artist associations are set' do
-      byebug
       dj_john = create(:dj)
       artist  = create(:artist)
       release = create(:release, artist: artist)
@@ -35,7 +33,5 @@ RSpec.describe Spin, type: :model do
 
       expect(spin).to be_valid
     end
-
   end
-
 end
