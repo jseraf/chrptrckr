@@ -2,10 +2,10 @@
   "name": "chrptrckr",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.5",
+    "@rails/webpacker": "5.2.1",
     "readmore-js": "^2.2.1"
   },
   "devDependencies": {
-    "webpack-dev-server": "2.11.2"
+    "webpack-dev-server": "^3.11.2"
   }
 }
