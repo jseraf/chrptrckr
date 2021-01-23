@@ -1,12 +1,12 @@
 # ABOUT
 
-ChrpTrckr tracks the CHIRP Radio playlist by artist, album and DJ. It retrieves bio info and images links from Last.fm and Discogs.
+ChrpTrckr tracks the [CHIRP Radio](https://chirpradio.org/) playlist by artist, album and DJ. Where available, it retrieves artist bio info and image links from Last.fm and the artist's Discogs info.
 
-# REQUIREMENTS (AS CONFIGURED)
+# REQUIREMENTS
 
-Ruby >= 2.5.0
+Ruby >= 2.6.6
 Postgres >= 9.6
-Bundler >= 1.16.1
+Bundler >= 1.17.2
 
 # INSTALL
 
@@ -19,7 +19,7 @@ Bundler >= 1.16.1
 
 # CRON
 
-ChrpTrcker uses the whenever gem to retrieve DJ spins every minute using the `rake spin:retrieve` task (which can also be run from the command line).
+ChrpTrcker uses the [whenever gem](https://github.com/javan/whenever) to retrieve DJ spins every minute using the `rake spin:retrieve` task (which can also be run from the command line) in lib/tasks.
 
 Edit config/schedule.rb to change this.
 
