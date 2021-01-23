@@ -4,9 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.0.3.4 '
+gem 'rails', '6.1.1'
 # Use postgres as the database for Active Record
-gem 'pg', '~> 1.0.0'
+gem 'pg', '~> 1.1.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -83,12 +83,12 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15', '< 4.0'
+  gem 'capybara',         '>= 2.15', '< 4.0'
   gem 'database_cleaner'
-  gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
-  gem 'rspec-rails', '~> 4.0.1'
+  gem 'faker',            git: 'https://github.com/stympy/faker.git', branch: 'master'
+  gem 'rspec-rails',      '~> 4.0.1'
   gem 'selenium-webdriver'
-  gem 'simplecov', require: false
+  gem 'simplecov',        require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
