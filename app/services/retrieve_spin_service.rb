@@ -8,8 +8,7 @@ class RetrieveSpinService
   private
 
   def self.duplicate?
-    return true if self.spin_id_is_duplicate?
-    return true if self.last_spin_is_duplicate?
+    return true if (self.spin_id_is_duplicate? || self.last_spin_is_duplicate?)
   end
 
   def self.spin_id_is_duplicate?
@@ -17,7 +16,10 @@ class RetrieveSpinService
   end
 
   def self.last_spin_is_duplicate?
+    return false if Spin.count.zero?
+
     last_spin = Spin.with_artist.last
+
     @spin['artist'] == last_spin.artist.name &&
       @spin['track'] == last_spin.track &&
       @spin['label'] == last_spin.label

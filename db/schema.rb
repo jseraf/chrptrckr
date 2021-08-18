@@ -121,5 +121,6 @@ ActiveRecord::Schema.define(version: 2021_01_23_172050) do
   add_foreign_key "releases", "artists"
   add_foreign_key "spins", "artists"
   add_foreign_key "spins", "djs"
+  add_foreign_key "spins", "labels"
   add_foreign_key "spins", "releases"
 end
