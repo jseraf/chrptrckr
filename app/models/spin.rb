@@ -12,9 +12,10 @@ class Spin < ApplicationRecord
   scope :recent,            -> { order(played_at: :desc) }
 
   # includes
-  scope :with_artist,               -> { includes :artist }
-  scope :with_label,                -> { includes :label }
-  scope :with_release,              -> { includes :release }
+  scope :with_artist,               -> { includes(:artist) }
+  scope :with_label,                -> { includes(:label) }
+  scope :with_release,              -> { includes(:release) }
+  scope :with_dj,                   -> { includes(:dj) }
   scope :with_artist_label,         -> { with_artist.with_label }
   scope :with_release_label,        -> { with_release.with_label }
   scope :with_artist_release_label, -> { with_artist.with_release.with_label }

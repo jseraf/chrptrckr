@@ -19,7 +19,9 @@ class ArtistsController < ApplicationController
     end
 
     @pagy, @spins = pagy(Spin.where(artist: @artist)
-                          .with_release_label.recent)
+                          .with_release_label
+                          .with_dj
+                          .recent)
     @spins = SpinDecorator.decorate_collection(@spins)
   end
 
