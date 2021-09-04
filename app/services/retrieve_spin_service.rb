@@ -19,11 +19,12 @@ class RetrieveSpinService
     def last_spin_is_duplicate?
       return false if Spin.count.zero?
 
-      last_spin = Spin.with_artist.last
+      sleep(1) # 09/04/21 Some duplicates created w/in a second of eachother?
+      last_spin = Spin.with_artist_label.last
 
       @spin['artist'] == last_spin.artist.name &&
         @spin['track'] == last_spin.track &&
-        @spin['label'] == last_spin.label
+        @spin['label'] == last_spin.label.name
     end
 
     def process_spin
