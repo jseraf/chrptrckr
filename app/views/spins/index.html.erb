@@ -8,13 +8,13 @@
   <% end %>
 </div>
 
-<table class="hover stack">
+<table class="border-collapse table-fixed">
   <thead>
-    <th width="20%">Artist</th>
-    <th width="20%">Song</th>
-    <th width="20%">Release</th>
-    <th width="20%">Label</th>
-    <th width="20%">Played at</th>
+    <th class="chirp-th w-1/5 bg">Artist</th>
+    <th class="chirp-th w-1/5 bg">Song</th>
+    <th class="chirp-th w-1/5 bg">Release</th>
+    <th class="chirp-th w-1/5 bg">Label</th>
+    <th class="chirp-th w-1/5 bg">Played at</th>
   </thead>
   <tbody>
   <% @spins.each do |spin| %>
@@ -23,4 +23,5 @@
   </tbody>
 </table>
 
-<%= pagy_foundation_nav(@pagy).html_safe %>
+<%== pagy_nav_js(@pagy).html_safe %>
+<%== pagy_combo_nav_js(@pagy).html_safe %>
