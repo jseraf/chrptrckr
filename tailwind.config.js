@@ -8,7 +8,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        chirp_th: '#3f3437',
+        amber: {
+          1000: '#3f3437',
+        },
+        red: {
+          850: '#822036'
+        }
       }
     }
   }
