@@ -1,4 +1,4 @@
-    <tr>
+    <tr class="<%= cycle('tr-even', 'tr-odd') %>">
       <td class="artist"><%= link_to spin.artist.name, artist_path(spin.artist) %></td>
       <td class="track"><%= spin.track %></td>
       <td class="release"><%= spin.release.title %></td>

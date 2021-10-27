@@ -3,12 +3,47 @@
 @tailwind utilities;
 
 @layer components {
-  .chirp-th {
-    @apply bg-chirp_th text-white
+  body {
+    @apply bg-gray-250;
   }
-}
 
-.pagy-nav, .pagy-nav-js {
+  a {
+    @apply text-red-850 hover:text-red-700 hover:underline;
+  }
+
+  table {
+    @apply m-6;
+  }
+
+  thead {
+    @apply drop-shadow-lg;
+  }
+
+  tr {
+    @apply align-top border-b-2 border-gray-200;
+  }
+
+  tr.odd, .odd {
+    @apply bg-gray-50;
+  }
+
+  tr.even, .even {
+    @apply bg-gray-100;
+  }
+
+  td {
+    @apply px-2 py-1;
+  }
+
+  tr td {
+    @apply leading-snug;
+  }
+
+  th {
+    @apply bg-amber-1000 text-left text-xs text-white p-2;
+  }
+
+  .pagy-nav, .pagy-nav-js {
     @apply flex space-x-2;
   }
 
@@ -76,3 +111,4 @@
   .pagy-combo-nav-js .page.next.disabled {
     @apply text-gray-400 cursor-default;
   }
+}

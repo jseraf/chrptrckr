@@ -12,29 +12,31 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%= stylesheet_link_tag "application" %>
+
   </head>
 
   <body>
-    <div class="grid-container">
-      <div id="responsive-menu" class="top-bar">
-          <nav class="table-bar-left">
-            <ul class="vertical medium-horizontal menu">
-              <li<%= " class=\"is-active\"" if current_page?(root_path)%>><%= link_to '< Home', root_path %></li>
-              <li<%= " class=\"is-active\"" if current_page?(artists_path)%>><%= link_to 'Artists', artists_path %></li>
-              <li<%= " class=\"is-active\"" if current_page?(djs_path)%>><%= link_to 'DJs', djs_path %></li>
-              <li<%= " class=\"is-active\"" if current_page?(most_played_path)%>><%= link_to 'Most Played', most_played_path %></li>
-            </ul>
-          </nav>
+    <nav class="bg-white shadow-lg">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between">
+          <div class="flex space-x-7">
+              <%= link_to '< Home', root_path %>
+              <%= link_to 'Artists', artists_path %>
+              <%= link_to 'DJs', djs_path %>
+              <%= link_to 'Most Played', most_played_path %>
+          </div>
+        </div>
       </div>
-      <% if flash[:alert] %>
-        <div class="callout alert"><%= flash[:alert] %></div>
-      <% end %>
-      <main class="grid-container">
-        <%= yield %>
-      </main>
+    </nav>
+
+    <% if flash[:alert] %>
+      <div class="callout alert"><%= flash[:alert] %></div>
+    <% end %>
+
+    <main class="grid place-items-center">
+      <%= yield %>
+    </main>
   </div>
   </body>
 </html>
