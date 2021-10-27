@@ -11,6 +11,30 @@
     @apply text-red-850 hover:text-red-700 hover:underline;
   }
 
+  nav {
+    @apply bg-white shadow-lg py-3 mb-6;
+  }
+
+  nav a {
+    @apply font-extrabold mt-1 over:no-underline;
+  }
+
+  h1 {
+    @apply font-bold text-2xl
+  }
+
+  form {
+    @apply m-2;
+  }
+
+  form input[type='search'] {
+    @apply px-2;
+  }
+
+  form input[type='submit'] {
+    @apply bg-red-700 border border-red-900 ml-2 p-2 font-bold shadow-inner shadow-md text-white hover:bg-red-600 hover:text-gray-100 hover:shadow;
+  }
+
   table {
     @apply m-6;
   }

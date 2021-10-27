@@ -1,0 +1,14 @@
+<table class="border-collapse table-fixed max-w-4xl">
+  <thead>
+    <th class="chirp-th w-1/5 bg">Artist</th>
+    <th class="chirp-th w-1/5 bg">Song</th>
+    <th class="chirp-th w-1/5 bg">Release</th>
+    <th class="chirp-th w-1/5 bg">Label</th>
+    <th class="chirp-th w-1/5 bg">Played at</th>
+  </thead>
+  <tbody>
+  <% spins.each do |spin| %>
+    <%= render 'spin', spin: spin %>
+  <% end %>
+  </tbody>
+</table>
