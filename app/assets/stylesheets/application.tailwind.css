@@ -16,7 +16,7 @@
   }
 
   nav a {
-    @apply font-extrabold mt-1 over:no-underline;
+    @apply font-extrabold mt-1 hover:no-underline;
   }
 
   h1 {
