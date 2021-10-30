@@ -18,13 +18,19 @@
 
   <body>
     <nav>
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="flex justify-between">
-          <div class="flex space-x-7">
+      <div class="max-w-6xl mx-auto px-4 align-baseline p-0">
+        <div class="flex justify-between align-baseline">
+          <div class="flex space-x-7 align-baseline">
               <%= link_to 'Home', root_path %>
               <%= link_to 'Artists', artists_path %>
               <%= link_to 'DJs', djs_path %>
               <%= link_to 'Most Played', most_played_path %>
+          </div>
+          <div>
+            <%= search_form_for @q, method: :post, url: search_spins_path, data: { turbo: false } do |f| %>
+              <%= f.search_field :spin_cont, placeholder: 'Search artist or song' %>
+              <%= f.submit %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -34,8 +40,10 @@
       <div class="callout alert"><%= flash[:alert] %></div>
     <% end %>
 
-    <main class="grid place-items-center">
-      <%= yield %>
+    <main>
+      <div>
+        <%= yield %>
+      </div>
     </main>
   </div>
   </body>

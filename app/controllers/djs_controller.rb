@@ -1,13 +1,13 @@
 class DjsController < ApplicationController
 
   def index
-    @q = Dj.recent.ransack(params[:q])
-    case @q.result.one?
+    @q_dj = Dj.recent.ransack(params[:q])
+    case @q_dj.result.one?
     when true
-      dj_id = @q.result.first.id
+      dj_id = @q_dj.result.first.id
       redirect_to dj_path(dj_id)
     else
-      @pagy, @djs = pagy(@q.result)
+      @pagy, @djs = pagy(@q_dj.result)
     end
   end
 

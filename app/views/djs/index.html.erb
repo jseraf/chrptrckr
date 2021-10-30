@@ -1,6 +1,6 @@
 <% provide :title_tag, 'DJs' %>
 <h1>DJs</h1>
-<%= search_form_for @q do |f| %>
+<%= search_form_for @q_dj do |f| %>
   <%= f.search_field :name_cont, placeholder: 'Search by name' %>
   <%= f.submit %>
 <% end %>

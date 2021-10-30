@@ -1,12 +1,6 @@
 <% provide :title_tag, 'Recently Played' %>
 
 <h1 class="font-sans">Recently Played</h1>
-<div>
-  <%= search_form_for @q, method: :post, url: search_spins_path, data: { turbo: false } do |f| %>
-    <%= f.search_field :spin_cont, placeholder: 'Search artist or song' %>
-    <%= f.submit %>
-  <% end %>
-</div>
 
 <%= render 'spin_table', spins: @spins %>
 

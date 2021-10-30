@@ -1,12 +1,13 @@
 class ArtistsController < ApplicationController
   def index
-    @q = Artist.ransack(params[:q])
-    case @q.result.one?
+    @q_artist = Artist.ransack(params[:q])
+
+    case @q_artist.result.one?
     when true
-      artist = find_artist_by_id(@q.result.first.id)
+      artist = find_artist_by_id(@q_artist.result.first.id)
       redirect_to artist_path(artist)
     else
-      @pagy, @artists = pagy(@q.result)
+      @pagy, @artists = pagy(@q_artist.result)
     end
   end
 
