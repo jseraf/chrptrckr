@@ -36,8 +36,12 @@
     @apply text-2xl;
   }
 
+  h2 {
+    @apply text-gray-700 text-xl mt-2;
+  }
+
   h3 {
-    @apply font-bold text-sm;
+    @apply text-sm mt-2;
   }
 
   form {
@@ -45,7 +49,7 @@
   }
 
   form input[type='search'] {
-    @apply mt-0.5 pl-1 py-0.5 text-sm placeholder-gray-300;
+    @apply mt-0.5 pl-1 py-0.5 text-sm placeholder-gray-500;
   }
 
   form input[type='submit'] {
@@ -97,11 +101,11 @@
   }
 
   #most-played {
-    @apply grid grid-cols-4 gap-4;
+    @apply grid grid-cols-4 gap-4 leading-snug;
   }
 
   #most-played .timeframe .count {
-    @apply col-span-2 color-gray-300 font-bold;
+    @apply col-span-2 font-bold;
   }
 
   .pagy-nav, .pagy-nav-js {

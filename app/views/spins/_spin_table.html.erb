@@ -1,3 +1,4 @@
+<% the_dj = spins.first.dj %>
 <table class="border-collapse table-fixed max-w-4xl">
   <thead>
     <th class="chirp-th w-1/5 bg">Artist</th>
@@ -7,8 +8,19 @@
     <th class="chirp-th w-1/5 bg">Played at</th>
   </thead>
   <tbody>
-  <% spins.each do |spin| %>
-    <%= render 'spin', spin: spin %>
-  <% end %>
+    <tr>
+      <td class="dj" colpan="5">
+        <%= the_dj.name %>
+      </td>
+    </tr>
+    <% spins.each do |spin| %>
+      <% if spin.dj != the_dj %>
+        <tr class="dj">
+          <td colspan="5"><%= spin.dj.name %></td>
+        </tr>
+      <%- end %>
+      <%= render 'spin', spin: spin %>
+      <% the_dj = spin.dj %>
+    <% end %>
   </tbody>
 </table>
