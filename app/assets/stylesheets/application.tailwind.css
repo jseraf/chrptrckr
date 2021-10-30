@@ -4,7 +4,7 @@
 
 @layer components {
   body {
-    @apply bg-gray-250;
+    @apply container mx-auto bg-gray-250;
   }
 
   a {
@@ -12,15 +12,32 @@
   }
 
   nav {
-    @apply bg-white shadow-lg py-3 mb-6;
+    @apply bg-white shadow-lg py-3 mb-6 align-baseline;
   }
 
   nav a {
-    @apply font-extrabold mt-1 hover:no-underline;
+    @apply font-extrabold mt-3 uppercase hover:no-underline;
+  }
+
+  main {
+    @apply container mx-auto max-w-4xl px-4;
+  }
+
+  nav + div,
+  main + div {
+    @apply flex justify-center items-center align-middle;
+  }
+
+  h1, h2, h3 {
+    @apply font-bold;
   }
 
   h1 {
-    @apply font-bold text-2xl
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply font-bold text-sm;
   }
 
   form {
@@ -28,15 +45,15 @@
   }
 
   form input[type='search'] {
-    @apply px-2;
+    @apply mt-0.5 pl-1 py-0.5 text-sm placeholder-gray-300;
   }
 
   form input[type='submit'] {
-    @apply bg-red-700 border border-red-900 ml-2 p-2 font-bold shadow-inner shadow-md text-white hover:bg-red-600 hover:text-gray-100 hover:shadow;
+    @apply bg-red-700 border border-red-900 ml-2 p-1 font-bold shadow-inner shadow-md text-xs text-white hover:bg-red-600 hover:text-gray-100 hover:shadow;
   }
 
   table {
-    @apply m-6;
+    @apply my-6;
   }
 
   thead {
@@ -45,6 +62,10 @@
 
   tr {
     @apply align-top border-b-2 border-gray-200;
+  }
+
+  tbody tr {
+    @apply hover:bg-gray-200 hover:border-gray-300;
   }
 
   tr.odd, .odd {
@@ -65,6 +86,22 @@
 
   th {
     @apply bg-amber-1000 text-left text-xs text-white p-2;
+  }
+
+  #artist-info {
+    @apply grid grid-cols-3 text-sm;
+  }
+
+  #bio {
+    @apply col-span-2 leading-tight;
+  }
+
+  #most-played {
+    @apply grid grid-cols-4 gap-4;
+  }
+
+  #most-played .timeframe .count {
+    @apply col-span-2 color-gray-300 font-bold;
   }
 
   .pagy-nav, .pagy-nav-js {

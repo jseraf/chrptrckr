@@ -1,24 +1,26 @@
 <% provide(:title_tag, "Recently played by #{@artist.name}") %>
 
-<h1><%= "#{@artist.name}" %></h1>
-<div id="artist-info" class="grid-x">
-  <div class="cell small-12 medium-2">
+<h1><%= @artist.name %></h1>
+
+<div id="artist-info">
+  <div id="sidebar">
 
     <%= render "artist_links" if (@artist.lastfm_url.present? || @artist.discogs_url.present? ) %>
 
-      <div class="play_info">
-        <h3>Played:</h3>
-        <ul class="no-bullet">
-          <li>Today: <%= today_count %></li>
-          <li>This Week: <%= this_week_count %></li>
-          <li>This Month: <%= this_month_count %></li>
-          <li>Last Month: <%= last_month_count %></li>
-          <li>All Time: <%= "#{@artist.spins_count}" %></li>
-        </ul>
-      </div>
+    <div class="play_info">
+      <h3>Played:</h3>
+      <ul class="no-bullet">
+        <li>Today: <%= today_count %></li>
+        <li>This Week: <%= this_week_count %></li>
+        <li>This Month: <%= this_month_count %></li>
+        <li>Last Month: <%= last_month_count %></li>
+        <li>All Time: <%= "#{@artist.spins_count}" %></li>
+      </ul>
+    </div>
 
   </div>
-  <div class="cell small-12 medium-10">
+
+  <div id="bio" class="cell small-12 medium-10">
     <h4>LastFM Bio</h4>
     <article id="bio" class="js-read-more">
       <p><%= simple_format(@artist.lastfm_bio) if @artist.lastfm_bio.present? %></p>
