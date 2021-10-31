@@ -1,4 +1,4 @@
-<% previous_count = nil %>
+<%- previous_count = nil %>
 <div id="most-played">
   <div class="time">
     <h3>Most Played Artists</h2>
@@ -6,7 +6,7 @@
       <div>
         <span class="color-gray-300 font-bold"><%= (previous_count != count) ? count : '&nbsp;'.html_safe %></span>
         <span class=""><%= link_to artist, dj_artist_path(@dj, artist.parameterize) %></dt>
-        <% previous_count = count %>
+        <%- previous_count = count %>
       </div>
     <% end %>
   </div>

@@ -37,7 +37,7 @@
   }
 
   h2 {
-    @apply text-gray-700 text-xl mt-2;
+    @apply text-gray-700 text-xl mt-2 mb-3;
   }
 
   h3 {
@@ -81,11 +81,15 @@
   }
 
   td {
-    @apply px-2 py-1;
+    @apply px-2 py-2;
   }
 
   tr td {
-    @apply leading-snug;
+    @apply leading-tight;
+  }
+
+  tr.dj {
+    @apply bg-yellow-650 font-bold text-sm text-white hover:bg-yellow-650;
   }
 
   th {
@@ -120,37 +124,29 @@
   .pagy-nav-js .page.active,
   .pagy-nav-js .page.prev.disabled,
   .pagy-nav-js .page.next.disabled {
-    @apply block rounded-lg px-3 py-1 text-sm text-gray-500 font-semibold bg-gray-200 shadow-md;
-    &:hover{
-      @apply bg-gray-300;
-    }
+    @apply block rounded-lg px-3 py-1 text-sm text-gray-500 font-semibold bg-gray-200 shadow-md hover:bg-gray-300;
+/*    }
     &:active{
       @apply bg-gray-400 text-white;
-    }
+    }*/
   }
 
   .pagy-nav .page.prev.disabled,
   .pagy-nav .page.next.disabled,
   .pagy-nav-js .page.prev.disabled,
   .pagy-nav-js .page.next.disabled {
-    @apply text-gray-400 cursor-default;
-    &:hover {
+    @apply text-gray-400 cursor-default hover:text-gray-400 hover:bg-gray-200;
+/*    &:active {
       @apply text-gray-400 bg-gray-200;
-    }
-    &:active {
-      @apply text-gray-400 bg-gray-200;
-    }
+    }*/
   }
 
   .pagy-nav .page.active,
   .pagy-nav-js .page.active {
-    @apply text-white cursor-default bg-gray-400;
-    &:hover {
-      @apply text-white bg-gray-400;
-    }
-    &:active {
+    @apply text-white cursor-default bg-gray-400 hover:text-white hover:bg-gray-400;
+    /*&:active {
       @apply bg-gray-400 text-white;
-    }
+    }*/
   }
 
 
@@ -164,12 +160,10 @@
 
   .pagy-combo-nav-js .page.prev,
   .pagy-combo-nav-js .page.next {
-    &:hover {
+      @apply ml-1 hover:text-gray-800;
+    /*&:active {
       @apply text-gray-800;
-    }
-    &:active {
-      @apply text-gray-800;
-    }
+    }*/
   }
 
   .pagy-combo-nav-js .page.prev.disabled,

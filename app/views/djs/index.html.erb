@@ -11,7 +11,7 @@
   <tbody>
   <% @djs.each do |dj| %>
     <tr>
-      <td><%= link_to dj.name, dj_path(dj) %></td>
+      <td class="<%= cycle('even', 'odd') %>"><%= link_to dj.name, dj_path(dj) %></td>
     </tr>
   <% end %>
   </tbody>

@@ -12,7 +12,7 @@
   </thead>
   <tbody>
   <% @artists.each do |artist| %>
-    <tr>
+    <tr class="<%= cycle('even', 'odd') %>">
       <td><%= link_to artist.name, artist_path(artist) %></td>
     </tr>
   <% end %>
