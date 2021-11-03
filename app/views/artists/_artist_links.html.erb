@@ -2,10 +2,10 @@
     <h3>Links</h3>
     <dl>
       <% if @artist.discogs_url.present? %>
-        <dt><%= link_to 'Discogs', @artist.discogs_url, class: 'link' %></dt>
+        <dt><%= link_to 'Discogs', @artist.discogs_url, target: "_blank" %></dt>
       <% end %>
       <% if @artist.lastfm_url.present? %>
-        <dt><%= link_to 'Last.fm', @artist.lastfm_url, class: 'link' %></dt>
+        <dt><%= link_to 'Last.fm', @artist.lastfm_url, target: "_blank" %></dt>
       <% end %>
     </dl>
   </div>

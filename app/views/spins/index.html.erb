@@ -2,7 +2,15 @@
 
 <h1 class="font-sans">Recently Played</h1>
 
-<%= render 'spin_table', spins: @spins %>
+<% unless @spins.empty? %>
+  <%= render 'spin_table', spins: @spins %>
 
-<%== pagy_nav_js(@pagy).html_safe %>
-<%== pagy_combo_nav_js(@pagy).html_safe %>
+  <div class="flex justify-center font-bold uppercase">
+    <%== pagy_nav_js(@pagy).html_safe %>
+    <%== pagy_combo_nav_js(@pagy).html_safe %>
+  </div>
+
+<% else %>
+  No spins found. Play it!
+<% end %>
+

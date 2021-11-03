@@ -12,15 +12,13 @@
     <th>Song</th>
     <th>Release</th>
     <th>Label</th>
+    <th>Played at</th>
   </thead>
   <tbody>
   <% @spins.each do |spin| %>
     <%= render "spins/spin", spin: spin %>
-    <%# render :partial => 'spins/spin', object: spin %>
-
   <% end %>
   </tbody>
 </table>
 
-<%== pagy_nav_js(@pagy).html_safe %>
-<%== pagy_combo_nav_js(@pagy).html_safe %>
+<%= pagy_nav_js(@pagy).html_safe %>

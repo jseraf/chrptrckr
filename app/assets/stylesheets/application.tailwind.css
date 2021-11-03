@@ -4,18 +4,18 @@
 
 @layer components {
   body {
-    @apply container mx-auto bg-gray-250;
+    @apply container mx-auto bg-gray-250 pb-12;
   }
 
   a {
     @apply text-red-850 hover:text-red-700 hover:underline;
   }
 
-  nav {
+  body > nav {
     @apply bg-white shadow-lg py-3 mb-6 align-baseline;
   }
 
-  nav a {
+  body > nav a {
     @apply font-extrabold mt-3 uppercase hover:no-underline;
   }
 
@@ -57,7 +57,7 @@
   }
 
   table {
-    @apply my-6;
+    @apply border-collapse min-w-full my-6;
   }
 
   thead {
@@ -96,12 +96,34 @@
     @apply bg-amber-1000 text-left text-xs text-white p-2;
   }
 
-  #artist-info {
-    @apply grid grid-cols-3 text-sm;
+  #artist-info,
+  #release-info {
+    @apply grid grid-cols-12 gap-x-2;
   }
 
-  #bio {
-    @apply col-span-2 leading-tight;
+  #artist-info {
+    @apply text-sm;
+  }
+
+  #sidebar {
+    @apply col-span-3;
+  }
+
+  #bio,
+  #spin-info {
+    @apply col-span-9 leading-tight;
+  }
+
+  #artist-info #bio #content {
+      @apply cursor-pointer;
+  }
+
+  #artist-info #bio .readmoreHide {
+    @apply hidden;
+  }
+
+  #bio button {
+    @apply font-bold py-4 hover:text-red-850;
   }
 
   #most-played {
@@ -124,29 +146,19 @@
   .pagy-nav-js .page.active,
   .pagy-nav-js .page.prev.disabled,
   .pagy-nav-js .page.next.disabled {
-    @apply block rounded-lg px-3 py-1 text-sm text-gray-500 font-semibold bg-gray-200 shadow-md hover:bg-gray-300;
-/*    }
-    &:active{
-      @apply bg-gray-400 text-white;
-    }*/
+    @apply block rounded-lg px-3 py-1 text-sm text-gray-500 bg-gray-200 shadow-md hover:bg-gray-300 active:bg-gray-400 active:text-white;
   }
 
   .pagy-nav .page.prev.disabled,
   .pagy-nav .page.next.disabled,
   .pagy-nav-js .page.prev.disabled,
   .pagy-nav-js .page.next.disabled {
-    @apply text-gray-400 cursor-default hover:text-gray-400 hover:bg-gray-200;
-/*    &:active {
-      @apply text-gray-400 bg-gray-200;
-    }*/
+    @apply text-gray-400 font-bold cursor-default hover:text-gray-400 hover:bg-gray-200 active:text-gray-400 active:bg-gray-200;
   }
 
   .pagy-nav .page.active,
   .pagy-nav-js .page.active {
-    @apply text-white cursor-default bg-gray-400 hover:text-white hover:bg-gray-400;
-    /*&:active {
-      @apply bg-gray-400 text-white;
-    }*/
+    @apply text-white cursor-default bg-gray-400 hover:text-white hover:bg-gray-400 active:bg-gray-400 active:text-white;
   }
 
 
@@ -160,10 +172,7 @@
 
   .pagy-combo-nav-js .page.prev,
   .pagy-combo-nav-js .page.next {
-      @apply ml-1 hover:text-gray-800;
-    /*&:active {
-      @apply text-gray-800;
-    }*/
+      @apply ml-1 hover:text-gray-800 active:text-gray-800;
   }
 
   .pagy-combo-nav-js .page.prev.disabled,

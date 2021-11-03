@@ -1,10 +1,10 @@
 <% provide :title_tag, 'Most Played' %>
-<% previous_count = nil %>
 
 <h1>Most Played</h2>
 
 <div id="most-played" class="grid grid-cols-4 gap-4">
   <% ArtistHelper::SPIN_COUNT_SCOPES.each do |time_frame| %>
+    <% previous_count = nil %>
     <div class="timeframe">
       <h2><%= time_frame.titleize %></h2>
       <div class="space-y-4">
