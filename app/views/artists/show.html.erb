@@ -18,51 +18,47 @@
   </div>
 
   <div id="bio">
+    <% unless @artist.lastfm_bio.empty? %>
       <h3>LastFM Bio</h3>
-      <% if @artist.lastfm_bio.present? %>
-        <% bio           = simple_format(@artist.lastfm_bio).html_safe %>
-        <% truncated_bio = truncate(bio, length: 250, escape: false).html_safe %>
+      <% bio           = simple_format(@artist.lastfm_bio).html_safe %>
+      <% truncated_bio = truncate(bio, length: 250, escape: false).html_safe %>
 
-        <article id="bio">
-          <div data-controller="readmore">
-            <div id="content" data-readmore-target="content" data-action="click->readmore#toggle"></div>
+      <article id="bio">
+        <div data-controller="readmore">
+          <div id="content" data-readmore-target="content" data-action="click->readmore#toggle"></div>
 
-            <div class="readmoreHide" data-readmore-target="truncated">
-              <%= truncate(bio, length: 250, escape: false) %>
-            </div>
-            <% unless truncated_bio == bio %>
-              <button data-readmore-target="toggle" data-action="click->readmore#toggle">Read More</button>
-
-              <div class="readmoreHide" data-readmore-target="full">
-                <%= bio %>
-              </div>
-            <% end %>
+          <div class="readmoreHide" data-readmore-target="truncated">
+            <%= truncate(bio, length: 250, escape: false) %>
           </div>
-        </article>
-      <% end %>
+          <% unless truncated_bio == bio %>
+            <button data-readmore-target="toggle" data-action="click->readmore#toggle">Read More</button>
+
+            <div class="readmoreHide" data-readmore-target="full">
+              <%= bio %>
+            </div>
+          <% end %>
+        </div>
+      </article>
+    <% end %>
   </div>
 </div>
 
 <div id="artist-spins">
-
   <h2>Recently Played</h2>
 
-  <table>
-    <thead>
-      <th>Song</th>
-      <th>Release</th>
-      <th>Label</th>
-      <th>Played</th>
-    </thead>
-    <tbody>
+  <div class="turbo-table">
+    <div class="turbo-header artist">
+      <div>Song</div>
+      <div>Release</div>
+      <div>Label</div>
+      <div>Played</div>
+      <div></div>
+    </div>
     <% @spins.each do |spin| %>
-
-      <%= render "artist_spin", spin: spin %>
-
+      <%= render partial: "spins/spin_row", locals: { is_artist_table: true, spin: spin } %>
     <% end %>
-    </tbody>
-  </table>
+  </div>
 
-  <%== pagy_nav_js(@pagy).html_safe %>
-  <%== pagy_combo_nav_js(@pagy).html_safe %>
+  <%== pagy_nav_js(@pagy) %>
+  <%== pagy_combo_nav_js(@pagy) %>
 </div>

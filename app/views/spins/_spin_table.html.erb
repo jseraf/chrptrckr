@@ -1,26 +1,29 @@
 <% the_dj = spins.first.dj %>
-<table class="border-collapse table-fixed max-w-4xl">
-  <thead>
-    <th class="chirp-th w-1/5 bg">Artist</th>
-    <th class="chirp-th w-1/5 bg">Song</th>
-    <th class="chirp-th w-1/5 bg">Release</th>
-    <th class="chirp-th w-1/5 bg">Label</th>
-    <th class="chirp-th w-1/5 bg">Played at</th>
-  </thead>
-  <tbody>
-    <tr class="dj">
-      <td colspan="5">
+
+<div class="turbo-table">
+  <div class="turbo-header">
+    <div class="turbo-header-cell">Artist</div>
+    <div class="turbo-header-cell">Song</div>
+    <div class="turbo-header-cell">Release</div>
+    <div class="turbo-header-cell">Label</div>
+    <div class="turbo-header-cell">Played at</div>
+  </div>
+  <% if params[:q].nil? %>
+    <div class="turbo-row">
+      <div class="cell dj col-span-5">
         <%= the_dj.name %>
-      </td>
-    </tr>
-    <% spins.each do |spin| %>
-      <% if spin.dj != the_dj %>
-        <tr class="dj">
-          <td colspan="5"><%= spin.dj.name %></td>
-        </tr>
-      <%- end %>
-      <%= render 'spin', spin: spin %>
-      <% the_dj = spin.dj %>
-    <% end %>
-  </tbody>
-</table>
+      </div>
+    </div>
+  <% end %>
+  <% spins.each do |spin| %>
+    <% if params[:q].nil? && spin.dj != the_dj %>
+      <div class="turbo-row grid grid-cols-5 gap-0">
+        <div class="cell dj col-span-5">
+          <%= spin.dj.name %>
+        </div>
+      </div>
+    <%- end %>
+    <%= render 'spin_row', spin: spin %>
+    <% the_dj = spin.dj %>
+  <%- end %>
+</div>

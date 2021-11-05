@@ -56,20 +56,50 @@
     @apply bg-red-700 border border-red-900 ml-2 p-1 font-bold shadow-inner shadow-md text-xs text-white hover:bg-red-600 hover:text-gray-100 hover:shadow;
   }
 
-  table {
+  table,
+  .turbo-table {
     @apply border-collapse min-w-full my-6;
   }
 
-  thead {
-    @apply drop-shadow-lg;
+  .turbo-header  {
+    @apply grid md:grid-cols-5 gap-0 sm:grid-cols-none;
   }
 
-  tr {
+  .turbo-header.artist {
+    md:grid-cols-4 !important;
+  }
+
+  .turbo-row {
+    @apply grid gap-0 md:grid-cols-5 sm:grid-cols-none ;
+  }
+
+  .turbo-row.artist {
+    md:grid-cols-4 !important;
+  }
+
+  .turbo-row.spin:nth-of-type(odd) {
+    @apply bg-gray-50;
+  }
+
+  .turbo-row.spin:nth-of-type(even) {
+    @apply bg-gray-100;
+  }
+
+  thead,
+  .turbo-header,
+  .turbo-row .cell.dj {
+    @apply drop-shadow-lg py-2;
+  }
+
+  tr,
+  .turbo-row,
+  .turbo-header {
     @apply align-top border-b-2 border-gray-200;
   }
 
-  tbody tr {
-    @apply hover:bg-gray-200 hover:border-gray-300;
+  tbody tr,
+  .turbo-row.spin {
+    @apply hover:bg-gray-200 hover:border-gray-300 ;
   }
 
   tr.odd, .odd {
@@ -80,20 +110,23 @@
     @apply bg-gray-100;
   }
 
-  td {
-    @apply px-2 py-2;
+  td,
+  .turbo-table .cell {
+    @apply leading-tight px-2 md:py-2 sm:py-0;
   }
 
   tr td {
     @apply leading-tight;
   }
 
-  tr.dj {
+  tr.dj,
+  .turbo-row .dj {
     @apply bg-yellow-650 font-bold text-sm text-white hover:bg-yellow-650;
   }
 
-  th {
-    @apply bg-amber-1000 text-left text-xs text-white p-2;
+  th,
+  .turbo-header {
+    @apply bg-amber-1000 font-bold text-left text-xs text-white p-2;
   }
 
   #artist-info,
