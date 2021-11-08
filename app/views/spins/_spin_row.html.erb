@@ -6,5 +6,5 @@
   <div class="cell track"><%= spin.track %></div>
   <div class="cell release"><%= link_to spin.release.title, artist_release_path(spin.artist, spin.release) %></div>
   <div class="cell record-label"><%= spin.label.name %></div>
-  <div class="cell time"><%= spin.spin_time_with_dj %></div>
+  <div class="cell time"><%= spin_time_with_dj(spin) %></div>
 </div>

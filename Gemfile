@@ -45,14 +45,10 @@ gem 'lastfm'
 gem 'whenever'
 
 # pagination
-gem 'pagy'
+gem 'pagy', '~> 5.2'
 
 # search
 gem 'ransack'
-
-# decorators
-gem 'draper'
-
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

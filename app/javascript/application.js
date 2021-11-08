@@ -3,3 +3,4 @@ import "./controllers"
 
 import "@hotwired/turbo-rails"
 
+window.addEventListener("turbo:load", Pagy.init)
