@@ -1,6 +1,12 @@
-<% provide :title_tag, 'Recently Played' %>
+<% provide :title_tag, @search_term.nil? ? 'Recently Played' : 'Search Results' %>
 
-<h1 class="font-sans">Recently Played</h1>
+<h1 class="font-sans"><%= yield :title_tag %></h1>
+
+<% unless @search_term.nil? %>
+  <div>
+    <strong>Searched For:</strong> "<%= @search_term %>"
+  </div>
+<% end %>
 
 <% unless @spins.empty? %>
   <%= render 'spin_table', spins: @spins %>
