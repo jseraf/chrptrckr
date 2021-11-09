@@ -1,19 +1,18 @@
 class DjsController < ApplicationController
 
   def index
-    @q = Dj.recent.ransack(params[:q])
-    case @q.result.one?
+    @q_dj = Dj.recent.ransack(params[:q])
+    case @q_dj.result.one?
     when true
-      dj_id = @q.result.first.id
+      dj_id = @q_dj.result.first.id
       redirect_to dj_path(dj_id)
     else
-      @pagy, @djs = pagy(@q.result)
+      @pagy, @djs = pagy(@q_dj.result)
     end
   end
 
   def show
-    @dj    = Dj.find(params[:id])
+    @dj           = Dj.find(params[:id])
     @pagy, @spins = pagy(Spin.where(dj: @dj).with_artist_label.recent)
-    @spins        = SpinDecorator.decorate_collection(@spins)
   end
 end

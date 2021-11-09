@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  body {
+    @apply container mx-auto bg-gray-250 pb-12;
+  }
+
+  a {
+    @apply text-red-850 hover:text-red-700 hover:underline;
+  }
+
+  body > nav {
+    @apply bg-white shadow-lg py-3 mb-6 align-baseline;
+  }
+
+  body > nav a {
+    @apply font-extrabold mt-3 uppercase hover:no-underline;
+  }
+
+  main {
+    @apply container mx-auto max-w-4xl px-4;
+  }
+
+  nav + div,
+  main + div {
+    @apply flex justify-center items-center align-middle;
+  }
+
+  h1, h2, h3 {
+    @apply font-bold;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-gray-700 text-xl mt-2 mb-3;
+  }
+
+  h3 {
+    @apply text-sm mt-2;
+  }
+
+  form {
+    @apply m-2;
+  }
+
+  form input[type='search'] {
+    @apply mt-0.5 pl-1 py-0.5 text-sm placeholder-gray-500;
+  }
+
+  form input[type='submit'] {
+    @apply bg-red-700 border border-red-900 ml-2 p-1 font-bold shadow-inner shadow-md text-xs text-white hover:bg-red-600 hover:text-gray-100 hover:shadow;
+  }
+
+  table,
+  .turbo-table {
+    @apply border-collapse min-w-full my-6;
+  }
+
+  .turbo-header  {
+    @apply grid md:grid-cols-5 gap-0 sm:grid-cols-none;
+  }
+
+  .turbo-header.artist {
+    md:grid-cols-4 !important;
+  }
+
+  .turbo-row {
+    @apply grid gap-0 md:grid-cols-5 sm:grid-cols-none ;
+  }
+
+  .turbo-row.artist {
+    md:grid-cols-4 !important;
+  }
+
+  .turbo-row.spin:nth-of-type(odd) {
+    @apply bg-gray-50;
+  }
+
+  .turbo-row.spin:nth-of-type(even) {
+    @apply bg-gray-100;
+  }
+
+  thead,
+  .turbo-header,
+  .turbo-row .cell.dj {
+    @apply drop-shadow-lg py-2;
+  }
+
+  tr,
+  .turbo-row,
+  .turbo-header {
+    @apply align-top border-b-2 border-gray-200;
+  }
+
+  tbody tr,
+  .turbo-row.spin {
+    @apply hover:bg-gray-200 hover:border-gray-300 ;
+  }
+
+  tr.odd, .odd {
+    @apply bg-gray-50;
+  }
+
+  tr.even, .even {
+    @apply bg-gray-100;
+  }
+
+  td,
+  .turbo-table .cell {
+    @apply leading-tight px-2 md:py-2 sm:py-0;
+  }
+
+  tr td {
+    @apply leading-tight;
+  }
+
+  tr.dj,
+  .turbo-row .dj {
+    @apply bg-yellow-650 font-bold text-sm text-white hover:bg-yellow-650;
+  }
+
+  th,
+  .turbo-header {
+    @apply bg-amber-1000 font-bold text-left text-xs text-white p-2;
+  }
+
+  #artist-info,
+  #release-info {
+    @apply grid grid-cols-12 gap-x-2;
+  }
+
+  #artist-info {
+    @apply text-sm;
+  }
+
+  #sidebar {
+    @apply col-span-3;
+  }
+
+  #bio,
+  #spin-info {
+    @apply col-span-9 leading-tight;
+  }
+
+  #artist-info #bio #content {
+      @apply cursor-pointer;
+  }
+
+  #artist-info #bio .readmoreHide {
+    @apply hidden;
+  }
+
+  #bio button {
+    @apply font-bold py-4 hover:text-red-850;
+  }
+
+  #most-played {
+    @apply grid grid-cols-4 gap-4 leading-snug;
+  }
+
+  #most-played .timeframe .count {
+    @apply col-span-2 font-bold;
+  }
+
+  .pagy-nav, .pagy-nav-js {
+    @apply flex space-x-2;
+  }
+
+  .pagy-nav .page a,
+  .pagy-nav .page.active,
+  .pagy-nav .page.prev.disabled,
+  .pagy-nav .page.next.disabled,
+  .pagy-nav-js .page a,
+  .pagy-nav-js .page.active,
+  .pagy-nav-js .page.prev.disabled,
+  .pagy-nav-js .page.next.disabled {
+    @apply block rounded-lg px-3 py-1 text-sm text-gray-500 bg-gray-200 shadow-md hover:bg-gray-300 active:bg-gray-400 active:text-white;
+  }
+
+  .pagy-nav .page.prev.disabled,
+  .pagy-nav .page.next.disabled,
+  .pagy-nav-js .page.prev.disabled,
+  .pagy-nav-js .page.next.disabled {
+    @apply text-gray-400 font-bold cursor-default hover:text-gray-400 hover:bg-gray-200 active:text-gray-400 active:bg-gray-200;
+  }
+
+  .pagy-nav .page.active,
+  .pagy-nav-js .page.active {
+    @apply text-white cursor-default bg-gray-400 hover:text-white hover:bg-gray-400 active:bg-gray-400 active:text-white;
+  }
+
+
+  .pagy-combo-nav-js {
+    @apply flex max-w-max rounded-full px-3 py-1 text-sm text-gray-500 font-semibold bg-gray-200 shadow-md;
+  }
+
+  .pagy-combo-nav-js .pagy-combo-input {
+    @apply bg-white px-2 rounded-sm
+  }
+
+  .pagy-combo-nav-js .page.prev,
+  .pagy-combo-nav-js .page.next {
+      @apply ml-1 hover:text-gray-800 active:text-gray-800;
+  }
+
+  .pagy-combo-nav-js .page.prev.disabled,
+  .pagy-combo-nav-js .page.next.disabled {
+    @apply text-gray-400 cursor-default;
+  }
+}

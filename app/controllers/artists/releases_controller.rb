@@ -7,7 +7,6 @@ class Artists::ReleasesController < ArtistsController
                            .with_release_label
                            .with_dj
                            .recent)
-    @spins = SpinDecorator.decorate_collection(@spins)
   end
 
   private

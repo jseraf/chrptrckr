@@ -12,27 +12,40 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
   </head>
 
   <body>
-    <div class="grid-container">
-      <div id="responsive-menu" class="top-bar">
-          <nav class="table-bar-left">
-            <ul class="vertical medium-horizontal menu">
-              <li<%= " class=\"is-active\"" if current_page?(root_path)%>><%= link_to '< Home', root_path %></li>
-              <li<%= " class=\"is-active\"" if current_page?(artists_path)%>><%= link_to 'Artists', artists_path %></li>
-              <li<%= " class=\"is-active\"" if current_page?(djs_path)%>><%= link_to 'DJs', djs_path %></li>
-              <li<%= " class=\"is-active\"" if current_page?(most_played_path)%>><%= link_to 'Most Played', most_played_path %></li>
-            </ul>
-          </nav>
+    <nav>
+      <div class="max-w-6xl mx-auto px-4 align-baseline p-0">
+        <div class="flex justify-between align-baseline">
+          <div class="flex space-x-7 align-baseline">
+              <%= link_to 'Home', root_path %>
+              <%= link_to 'Artists', artists_path %>
+              <%= link_to 'DJs', djs_path %>
+              <%= link_to 'Most Played', most_played_path %>
+          </div>
+          <div>
+            <%= search_form_for @q, method: :get, url: spins_path, data: { turbo: false } do |f| %>
+              <%= f.search_field :spin_cont, placeholder: 'Search artist or song' %>
+              <%= hidden_field_tag 'page', '1', { class: 'pagy-page' } %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <% if flash[:alert] %>
-        <div class="callout alert"><%= flash[:alert] %></div>
-      <% end %>
-      <main class="grid-container">
+    </nav>
+
+    <% if flash[:alert] %>
+      <div class="callout alert"><%= flash[:alert] %></div>
+    <% end %>
+
+    <main>
+      <div>
         <%= yield %>
-      </main>
+      </div>
+    </main>
   </div>
   </body>
 </html>

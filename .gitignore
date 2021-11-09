@@ -39,3 +39,9 @@ yarn-debug.log*
 
 # api credentials
 /config/credentials.yml.enc
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+# cssbundling-rails
+/app/assets/stylesheets/application.css

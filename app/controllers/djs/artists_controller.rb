@@ -9,7 +9,6 @@ class Djs::ArtistsController < DjsController
   def show
     @dj    = Dj.find(params[:dj_id])
     @pagy, @spins = pagy(Spin.where(dj: @dj).where(artist: @artist).with_artist_label.recent)
-    @spins = SpinDecorator.decorate_collection(@spins)
   end
 
   private

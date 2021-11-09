@@ -1,56 +1,64 @@
 <% provide(:title_tag, "Recently played by #{@artist.name}") %>
-
-<h1><%= "#{@artist.name}" %></h1>
-<div id="artist-info" class="grid-x">
-  <div class="cell small-12 medium-2">
+<h1><%= @artist.name %></h1>
+<div id="artist-info">
+  <div id="sidebar">
 
     <%= render "artist_links" if (@artist.lastfm_url.present? || @artist.discogs_url.present? ) %>
 
-      <div class="play_info">
-        <h3>Played:</h3>
-        <ul class="no-bullet">
-          <li>Today: <%= today_count %></li>
-          <li>This Week: <%= this_week_count %></li>
-          <li>This Month: <%= this_month_count %></li>
-          <li>Last Month: <%= last_month_count %></li>
-          <li>All Time: <%= "#{@artist.spins_count}" %></li>
-        </ul>
-      </div>
-
+    <div class="play_info">
+      <h3>Played:</h3>
+      <ul class="no-bullet">
+        <li>Today: <%= today_count %></li>
+        <li>This Week: <%= this_week_count %></li>
+        <li>This Month: <%= this_month_count %></li>
+        <li>Last Month: <%= last_month_count %></li>
+        <li>All Time: <%= "#{@artist.spins_count}" %></li>
+      </ul>
+    </div>
   </div>
-  <div class="cell small-12 medium-10">
-    <h4>LastFM Bio</h4>
-    <article id="bio" class="js-read-more">
-      <p><%= simple_format(@artist.lastfm_bio) if @artist.lastfm_bio.present? %></p>
-    </article>
-  </div>
-</div>
 
-<div id="artist-spins" class="grid-x">
-  <div class="small-12">
-    <h2>Recently Played</h2>
+  <div id="bio">
+    <% unless @artist.lastfm_bio.empty? %>
+      <h3>LastFM Bio</h3>
+      <% bio           = simple_format(@artist.lastfm_bio).html_safe %>
+      <% truncated_bio = truncate(bio, length: 250, escape: false).html_safe %>
 
-    <table class="hover">
-      <thead>
-        <th>Song</th>
-        <th>Release</th>
-        <th>Label</th>
-        <th>Played</th>
-      </thead>
-      <tbody>
-      <% @spins.each do |spin| %>
+      <article id="bio">
+        <div data-controller="readmore">
+          <div id="content" data-readmore-target="content" data-action="click->readmore#toggle"></div>
 
-        <%= render "artist_spin", spin: spin %>
+          <div class="readmoreHide" data-readmore-target="truncated">
+            <%= truncate(bio, length: 250, escape: false) %>
+          </div>
+          <% unless truncated_bio == bio %>
+            <button data-readmore-target="toggle" data-action="click->readmore#toggle">Read More</button>
 
-      <% end %>
-      </tbody>
-    </table>
-
-    <%= pagy_foundation_nav(@pagy).html_safe %>
+            <div class="readmoreHide" data-readmore-target="full">
+              <%= bio %>
+            </div>
+          <% end %>
+        </div>
+      </article>
+    <% end %>
   </div>
 </div>
 
-<script>
-  $('#bio').readmore({embedCSS: false,moreLink: '<a href="#">Show more of the   LastFM bio</a>'});
-</script>
+<div id="artist-spins">
+  <h2>Recently Played</h2>
 
+  <div class="turbo-table">
+    <div class="turbo-header artist">
+      <div>Song</div>
+      <div>Release</div>
+      <div>Label</div>
+      <div>Played</div>
+      <div></div>
+    </div>
+    <% @spins.each do |spin| %>
+      <%= render partial: "spins/spin_row", locals: { is_artist_table: true, spin: spin } %>
+    <% end %>
+  </div>
+
+  <%== pagy_nav_js(@pagy) %>
+  <%== pagy_combo_nav_js(@pagy) %>
+</div>

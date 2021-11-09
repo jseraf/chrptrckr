@@ -1,6 +1,6 @@
-    <tr>
+    <tr class="<%= cycle('even', 'odd') %>">
       <td class="track"><%= spin.track %></td>
       <td class="release"><%= link_to spin.release.title, artist_release_path(spin.artist.id, spin.release.id) %></td>
       <td class="record-label"><%= spin.label.name %></td>
-      <td class="time"><%= spin.spin_time_with_dj %></td>
+      <td class="time"><%= spin_time_with_dj(spin) %></td>
     </tr>

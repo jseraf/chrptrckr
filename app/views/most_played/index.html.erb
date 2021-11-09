@@ -1,17 +1,21 @@
 <% provide :title_tag, 'Most Played' %>
 
-<h2>Most Played</h2>
+<h1>Most Played</h2>
 
-<div id="most-played">
+<div id="most-played" class="grid grid-cols-4 gap-4">
   <% ArtistHelper::SPIN_COUNT_SCOPES.each do |time_frame| %>
+    <% previous_count = nil %>
     <div class="timeframe">
-      <h3><%= time_frame.titleize %></h3>
-      <dl>
+      <h2><%= time_frame.titleize %></h2>
+      <div class="space-y-4">
       <% send("most_played_#{time_frame}").each do |artist, count| %>
-        <dt class="artist"><%= link_to artist[0], artist_path(artist[1]) %></dt>
-        <dd class="count"><%= count %></dd>
+        <div id="<%= time_frame %>" class="grid grid-cols-12">
+          <span class="count col-span-2 color-gray-300 font-bold"><%= (previous_count != count) ? count : '&nbsp;'.html_safe %></span>
+          <span class="artist col-span-8"><%= link_to artist[0], artist_path(artist[1]) %></dt>
+          <% previous_count = count %>
+        </div>
       <% end %>
-      </dl>
+      </div>
     </div>
   <% end %>
 </div>
