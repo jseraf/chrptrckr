@@ -67,10 +67,10 @@
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.1.4.tgz#c3c5a9f8302c429af9722b6c50ab48049016d2a3"
   integrity sha512-0LmSKJTuo2dL6BQ+9xxLnS9lbkyfz2mBGeBnQ2J7o9Bn0l0q+ZC6VuoZMZZXPvABI4QT7Nfknv5WhfKYL+boew==
 
-"@rails/actioncable@^6.1.4-1":
-  version "6.1.4-1"
-  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.1.4-1.tgz#69982e7f352d732f71fda0cc01b7ba8269c9945b"
-  integrity sha512-b6sLoMop3gX22Wm2P5LPpKcZGwsf1ZoAGS+g1HrTrdlsZ/ENOKIBiSNnHOJajHwcYlF0TefBs7e7jIYZHVYihQ==
+"@rails/actioncable@^7.0.0-rc1":
+  version "7.0.0-rc1"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.0.0-rc1.tgz#b9303cb72074946b9463f99c3ab1b08060b29685"
+  integrity sha512-/l/J59pX0YaPmnqgo/HQ3y8pHggtRH9T/AndieB6w76SEILhscYLSI05lncnwzZg7LRWtlv1ZKE829hvOMCyFw==
 
 "@tailwindcss/aspect-ratio@^0.3.0":
   version "0.3.0"
