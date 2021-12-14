@@ -18,7 +18,7 @@
   </div>
 
   <div id="bio">
-    <% unless @artist.lastfm_bio.empty? %>
+    <% if @artist.lastfm_bio.present? %>
       <h3>LastFM Bio</h3>
       <% bio           = simple_format(@artist.lastfm_bio).html_safe %>
       <% truncated_bio = truncate(bio, length: 250, escape: false).html_safe %>
