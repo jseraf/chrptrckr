@@ -1,26 +1,22 @@
-<% provide :title_tag, 'Recently Played' %>
+<% provide :title_tag, @search_term.nil? ? 'Recently Played' : 'Search Results' %>
 
-<h1>Recently Played</h1>
-<div class="cell">
-  <%= search_form_for @q, method: :post, url: search_spins_path do |f| %>
-    <%= f.search_field :spin_cont, placeholder: 'Search artist or song' %>
-    <%= f.submit %>
-  <% end %>
-</div>
+<h1 class="font-sans"><%= yield :title_tag %></h1>
 
-<table class="hover stack">
-  <thead>
-    <th width="20%">Artist</th>
-    <th width="20%">Song</th>
-    <th width="20%">Release</th>
-    <th width="20%">Label</th>
-    <th width="20%">Played at</th>
-  </thead>
-  <tbody>
-  <% @spins.each do |spin| %>
-    <%= render 'spin', spin: spin %>
-  <% end %>
-  </tbody>
-</table>
+<% unless @search_term.nil? %>
+  <div>
+    <strong>Searched For:</strong> "<%= @search_term %>"
+  </div>
+<% end %>
 
-<%= pagy_foundation_nav(@pagy).html_safe %>
+<% unless @spins.empty? %>
+  <%= render 'spin_table', spins: @spins %>
+
+  <div class="flex justify-center font-bold uppercase">
+    <%== pagy_nav_js(@pagy).html_safe %>
+    <%== pagy_combo_nav_js(@pagy).html_safe %>
+  </div>
+
+<% else %>
+  No spins found. Play it!
+<% end %>
+

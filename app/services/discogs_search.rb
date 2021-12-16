@@ -6,7 +6,7 @@ class DiscogsSearch
     wrapper.search(search_term, per_page: 1, type: search_type)
   end
 
-  def self.get_search_fields search_type
+  def self.get_search_fields(search_type)
     case search_type
     when 'release'
       ['artist', 'release', 'track']

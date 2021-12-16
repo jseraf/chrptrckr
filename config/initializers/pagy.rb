@@ -1,3 +1,1 @@
-require 'pagy/extras/foundation'
-
-Pagy::VARS[:items] = 50
+require 'pagy/extras/navs'

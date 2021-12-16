@@ -20,22 +20,24 @@ class Artist < ApplicationRecord
   def lastfm
     lastfm_results = LastfmSearch.call(
                        search_type: 'artist',
-                       search_hash: { artist: name }
-                     )
+                       search_hash: { artist: name })
     return unless lastfm_results.present?
 
     self.lastfm_url = lastfm_results['url']
 
-    return if lastfm_results['bio']['content'] == '{}'
+    bio = lastfm_results['bio']['content']
 
-    self.lastfm_bio = lastfm_results['bio']['content']
+    # Account for the various incarnations of empty bios
+    self.lastfm_bio = if bio.empty? || bio.class == Hash
+                        ''
+                      else
+                        bio.split('<a href')&.first&.strip
+                      end
   end
 
   def discogs
-    discogs_results = DiscogsSearch.call(
-                        search_type: 'artist',
-                        search_term: name
-                      )
+    discogs_results = DiscogsSearch.call(search_type: 'artist',
+                                         search_term: name)
     return unless discogs_results.results.first.present?
 
     path = discogs_results.results.first.uri

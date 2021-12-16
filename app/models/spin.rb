@@ -6,15 +6,18 @@ class Spin < ApplicationRecord
   belongs_to :release, touch: true, counter_cache: true
   belongs_to :label
 
+  validates_uniqueness_of :chirp_id, message: UNIQUE_ERROR_MESSAGE
+
   #SCOPES
   scope :recent,            -> { order(played_at: :desc) }
 
   # includes
-  scope :with_artist,       -> { includes :artist }
-  scope :with_label,        -> { includes :label }
-  scope :with_release,      -> { includes :release }
-  scope :with_artist_label, -> { with_artist.with_label }
-  scope :with_release_label,-> { with_release.with_label }
+  scope :with_artist,               -> { includes(:artist) }
+  scope :with_label,                -> { includes(:label) }
+  scope :with_release,              -> { includes(:release) }
+  scope :with_dj,                   -> { includes(:dj) }
+  scope :with_artist_label,         -> { with_artist.with_label }
+  scope :with_release_label,        -> { with_release.with_label }
   scope :with_artist_release_label, -> { with_artist.with_release.with_label }
 
   # time-related
@@ -46,6 +49,4 @@ class Spin < ApplicationRecord
   scope :by_dj, -> (dj_id ) { where('dj_id = ?', dj_id) }
 
   ransack_alias :spin, :track_or_artist_name
-
-  validates_uniqueness_of :chirp_id, message: UNIQUE_ERROR_MESSAGE
 end

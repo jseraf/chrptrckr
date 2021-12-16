@@ -1,26 +1,23 @@
-# 2.5.0 :001 > LastfmSearch.call('album',{artist: 'ABC',album:'Lexicon of Love'})
-# Traceback (most recent call last):
-#         3: from (irb):1
-#         2: from app/services/lastfm_search.rb:12:in `call'
-#         1: from app/services/lastfm_search.rb:20:in `album'
+# LastfmSearch.call('album', { artist: 'ABC', album: 'Lexicon of Love' })
 
 class LastfmSearch
   TOKEN   = Rails.application.credentials.lastfm[:token]
   API_KEY = Rails.application.credentials.lastfm[:api_key]
 
-  def self.call(search_type:, search_hash:)
-    search_hash[:limit] = 1
+  class << self
+    def call(search_type:, search_hash:)
+      search_hash[:limit] = 1
 
-    wrapper = Lastfm.new(API_KEY, TOKEN)
-    wrapper.send(search_type).get_info(search_hash)
-  end
+      wrapper = Lastfm.new(API_KEY, TOKEN)
+      wrapper.send(search_type).get_info(search_hash)
+    rescue Lastfm::ApiError => e # "The artist you supplied could not be found"
+      return nil
+    end
 
-  private
-  def self.album search_hash
-    self.wrapper.album.get_info(search_hash)
-  end
+    private
 
-  def return_nil
-    nil
+    def album(search_hash)
+      self.wrapper.album.get_info(search_hash)
+    end
   end
 end

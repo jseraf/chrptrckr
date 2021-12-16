@@ -14,7 +14,8 @@ Bundler >= 1.17.2
 - Open terminal / command line and cd into directory
 - Run `bundle install`
 - Run `rake db:setup`
-- Run `rails s` to start server
+- Run `yarn install`
+- Run `bin/dev` or `rails s` to start server
 - Visit http://localhost:3000
 
 # CRON

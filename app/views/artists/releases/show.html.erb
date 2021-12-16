@@ -1,27 +1,27 @@
-
 <h2><%= link_to @artist.name, artist_path(@artist) %></h2>
-<h3><%= "#{@release.title}" %></h3>
-<h4><%= "#{@release.year}" %>
-
-<div>
-  <%= image_tag @release.discogs_img, alt: "#{@artist.name} - #{@release.title}" if @release.discogs_img.present? %>
+<div id="release-info">
+  <%- if @release.discogs_img.present? %>
+    <div id="sidebar">
+      <%= image_tag @release.discogs_img, alt: "#{@artist.name} - #{@release.title}" %>
+    </div>
+  <% end %>
+  <div id="spin-info">
+    <h2 class="py-0"><%= "#{@release.title}" %></h2>
+    <h3><%= "#{@release.year}" %></h3>
+    <p>Played: <%= pluralize(@release.spins_count, 'time') %> since <%= format_date_time(@release.created_at) %></p>
+  </div>
 </div>
-
-<p>
-  Played: <%= pluralize(@release.spins_count, 'time', 'times') %> since <%= format_date_time(@release.created_at) %>
-</p>
 
 <table>
   <thead>
-    <th>Artist</th>
     <th>Song</th>
     <th>Release</th>
     <th>Label</th>
+    <th>Played at</th>
   </thead>
   <tbody>
   <% @spins.each do |spin| %>
     <%= render 'artist_spin', spin: spin %>
-    <%# render :partial => 'spins/spin', object: spin %>
   <% end %>
   </tbody>
 </table>
