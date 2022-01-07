@@ -4,9 +4,9 @@ ChrpTrckr tracks the [CHIRP Radio](https://chirpradio.org/) playlist by artist, 
 
 # REQUIREMENTS
 
-Ruby >= 2.6.6
+Ruby >= 3.0.2
 Postgres >= 9.6
-Bundler >= 1.17.2
+Bundler >= 2.2.22
 
 # INSTALL
 
@@ -25,4 +25,3 @@ ChrpTrcker uses the [whenever gem](https://github.com/javan/whenever) to retriev
 Edit config/schedule.rb to change this.
 
 Run `whenever --update-crontab` from the application's root directory.
-
