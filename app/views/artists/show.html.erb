@@ -46,6 +46,7 @@
 <div id="artist-spins">
   <h2>Recently Played</h2>
 
+  <%= turbo_stream_from "spin" %>
   <div class="turbo-table">
     <div class="turbo-header artist">
       <div>Song</div>
@@ -54,9 +55,11 @@
       <div>Played</div>
       <div></div>
     </div>
-    <% @spins.each do |spin| %>
-      <%= render partial: "spins/spin_row", locals: { is_artist_table: true, spin: spin } %>
-    <% end %>
+    <div id="<%= dom_id(@artist) %>">
+      <% @spins.each do |spin| %>
+        <%= render partial: "spins/spin", locals: { is_artist_table: true, spin: spin } %>
+      <% end %>
+    </div>
   </div>
 
   <%== pagy_nav_js(@pagy) %>

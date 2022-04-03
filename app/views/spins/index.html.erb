@@ -1,3 +1,5 @@
+<%= turbo_stream_from "spin" if @pagy.page == 1 %>
+
 <% provide :title_tag, @search_term.nil? ? 'Recently Played' : 'Search Results' %>
 
 <h1 class="font-sans"><%= yield :title_tag %></h1>
@@ -9,7 +11,7 @@
 <% end %>
 
 <% unless @spins.empty? %>
-  <%= render 'spin_table', spins: @spins %>
+  <%= render partial: 'spin_table', locals: { spins: @spins } %>
 
   <div class="flex justify-center font-bold uppercase">
     <%== pagy_nav_js(@pagy).html_safe %>

@@ -4,6 +4,7 @@ class Artist < ApplicationRecord
   friendly_id :name, use: %i[finders slugged]
 
   has_many :spins
+  has_many :releases
 
   validates :name, presence: true, uniqueness: true
 

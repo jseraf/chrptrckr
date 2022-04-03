@@ -1,5 +1,3 @@
-<% the_dj = spins.first.dj %>
-
 <div class="turbo-table">
   <div class="turbo-header">
     <div class="turbo-header-cell">Artist</div>
@@ -8,22 +6,6 @@
     <div class="turbo-header-cell">Label</div>
     <div class="turbo-header-cell">Played at</div>
   </div>
-  <% if params[:q].nil? %>
-    <div class="turbo-row">
-      <div class="cell dj col-span-5">
-        <%= the_dj.name %>
-      </div>
-    </div>
-  <% end %>
-  <% spins.each do |spin| %>
-    <% if params[:q].nil? && spin.dj != the_dj %>
-      <div class="turbo-row grid grid-cols-5 gap-0">
-        <div class="cell dj col-span-5">
-          <%= spin.dj.name %>
-        </div>
-      </div>
-    <%- end %>
-    <%= render 'spin_row', spin: spin %>
-    <% the_dj = spin.dj %>
-  <%- end %>
+
+  <%= render partial: 'spins/spin_rows', locals: { spins: @spins, page_number: @pagy.page } %>
 </div>
