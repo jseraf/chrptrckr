@@ -1,0 +1,17 @@
+<%= turbo_frame_tag "spins-page-#{page_number}" do %>
+  <div id="spins-table">
+    <% the_dj = spins.first.dj %>
+
+    <% if params[:q].nil? %>
+      <%= render 'spins/dj', dj: the_dj %>
+    <% end %>
+
+    <% spins.each do |spin| %>
+      <% if params[:q].nil? && spin.dj != the_dj %>
+        <%= render 'spins/dj', dj: spin.dj %>
+      <%- end %>
+      <%= render 'spins/spin', spin: spin %>
+      <% the_dj = spin.dj %>
+    <%- end %>
+  </div>
+<% end %>

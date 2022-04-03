@@ -1,4 +1,4 @@
-    <tr class="spin-<%= spin.id %> <%= cycle('even', 'odd') %>">
+    <tr id="<%= dom_id spin %>" class="<%= cycle('even', 'odd') %>">
       <td class="artist"><%= link_to spin.artist.name, dj_artist_path(@dj, spin.artist), title: "#{spin.artist.name} songs played by #{@dj.name}" %></td>
       <td class="track"><%= spin.track %></td>
       <td class="release"><%= link_to spin.release.title, artist_release_path(spin.release.artist, spin.release) %></td>

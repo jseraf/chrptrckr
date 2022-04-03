@@ -6,10 +6,23 @@ class Spin < ApplicationRecord
   belongs_to :release, touch: true, counter_cache: true
   belongs_to :label
 
+  after_create_commit do
+    # replace the home page table
+    broadcast_replace_to("spin", target: 'spins-page-1',
+                                 partial: 'spins/spin_rows',
+                                 locals: { spins: Spin.most_recent_20,
+                                           page_number: 1 } )
+
+    # broadcast_prepend_to("spin", target: dom_id(self.artist),
+    #                              partial: 'artist/spin',
+    #                              locals: { spin: self, is_artist_table: true } )
+  end
+
   validates_uniqueness_of :chirp_id, message: UNIQUE_ERROR_MESSAGE
 
   #SCOPES
   scope :recent,            -> { order(played_at: :desc) }
+  scope :most_recent_20,    -> { with_artist_release_label.with_dj.recent.take(20) }
 
   # includes
   scope :with_artist,               -> { includes(:artist) }
