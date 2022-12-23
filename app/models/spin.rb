@@ -1,21 +1,23 @@
 class Spin < ApplicationRecord
   UNIQUE_ERROR_MESSAGE = 'with this chirp_id has already been saved.'
 
-  belongs_to :dj, touch: true, counter_cache: true
-  belongs_to :artist, touch: true, counter_cache: true
-  belongs_to :release, touch: true, counter_cache: true
+  belongs_to :dj,       touch: true, counter_cache: true
+  belongs_to :artist,   touch: true, counter_cache: true
+  belongs_to :release,  touch: true, counter_cache: true
   belongs_to :label
 
   after_create_commit do
-    # replace the home page table
-    broadcast_replace_to("spin", target: 'spins-page-1',
-                                 partial: 'spins/spin_rows',
-                                 locals: { spins: Spin.most_recent_20,
-                                           page_number: 1 } )
+    # If needed, add the new DJ info
+    if new_dj?
+      broadcast_prepend_to('spin',  target:   'spins-table',
+                                    partial:  'spins/dj',
+                                    locals:   { dj: self.dj} )
 
-    # broadcast_prepend_to("spin", target: dom_id(self.artist),
-    #                              partial: 'artist/spin',
-    #                              locals: { spin: self, is_artist_table: true } )
+    end
+    # Put the spin after the current DJ's row
+    broadcast_after_to('spin', target:   "dj_#{self.dj_id}",
+                               partial:  'spins/spin',
+                               locals:   { spin: self } )
   end
 
   validates_uniqueness_of :chirp_id, message: UNIQUE_ERROR_MESSAGE
@@ -62,4 +64,10 @@ class Spin < ApplicationRecord
   scope :by_dj, -> (dj_id ) { where('dj_id = ?', dj_id) }
 
   ransack_alias :spin, :track_or_artist_name
+
+  private
+
+  def new_dj?
+    Spin.last(2).pluck(:dj_id).uniq.size == 2
+  end
 end
