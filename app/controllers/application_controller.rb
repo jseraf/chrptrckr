@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :set_global_search
 
   def set_global_search
-    @q = Spin.search(params[:q])
+    @q = Spin.ransack(params[:q])
   end
 end
