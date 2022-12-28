@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "spins-page-#{page_number}" do %>
-  <div id="spins-table">
+  <div id="spins-table" <% if page_number == 1 %> data-controller="home" <% end %>>
     <% the_dj = spins.first.dj %>
 
     <% if params[:q].nil? %>

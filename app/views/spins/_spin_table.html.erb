@@ -6,6 +6,7 @@
     <div class="turbo-header-cell">Label</div>
     <div class="turbo-header-cell">Played at</div>
   </div>
-
-  <%= render partial: 'spins/spin_rows', locals: { spins: @spins, page_number: @pagy.page } %>
+  <div data-controller="home">
+    <%= render partial: 'spins/spin_rows', locals: { spins: spins, page_number: @pagy.page } %>
+  </div>
 </div>

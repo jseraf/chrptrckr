@@ -7,14 +7,15 @@ class Spin < ApplicationRecord
   belongs_to :label
 
   after_create_commit do
-    # If needed, add the new DJ info
+    # Update the homepage
+    #   If needed, add the new DJ info..
     if new_dj?
-      broadcast_prepend_to('spin',  target:   'spins-table',
+      broadcast_prepend_to('spin',  target:   'spins_table',
                                     partial:  'spins/dj',
                                     locals:   { dj: self.dj} )
 
     end
-    # Put the spin after the current DJ's row
+    #   then add the spin after the current DJ's row
     broadcast_after_to('spin', target:   "dj_#{self.dj_id}",
                                partial:  'spins/spin',
                                locals:   { spin: self } )
