@@ -1,24 +1,25 @@
 <% provide(:title_tag, "Recently played #{@dj.name}") %>
 
+<h1 class="font-sans">Songs by <%= link_to @artist.name, artist_path(@artist) %> played by <%= link_to @dj.name, dj_path(@dj) %></h1>
+
 <p>
   <%= link_to "Back to #{@dj.name}'s page", dj_path(@dj) %>
 </p>
 
-<h1>Songs by <%= link_to @artist.name, artist_path(@artist) %> played by <%= link_to @dj.name, dj_path(@dj) %></h1>
 
-<table>
-  <thead>
-    <th>Artist</th>
-    <th>Song</th>
-    <th>Release</th>
-    <th>Label</th>
-    <th>Played at</th>
-  </thead>
-  <tbody>
+<div class="turbo-table">
+  <div class="turbo-header">
+    <div class="turbo-header-cell">Artist</div>
+    <div class="turbo-header-cell">Song</div>
+    <div class="turbo-header-cell">Release</div>
+    <div class="turbo-header-cell">Label</div>
+    <div class="turbo-header-cell">Played at</div>
+  </div>
+  <div>
   <% @spins.each do |spin| %>
     <%= render "spins/spin", spin: spin %>
   <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
 <%= pagy_nav_js(@pagy).html_safe %>
