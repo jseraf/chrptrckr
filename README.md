@@ -11,11 +11,11 @@ Bundler >= 2.2.22
 ## API Tokens
 Update Rails [credentials file](https://guides.rubyonrails.org/security.html#custom-credentials) to include:
 
-`[lastfm](https://www.last.fm/api):`
-  `user_token`
-`[discogs](https://www.discogs.com/developers/):`
-  `api_key`
-  `token`
+[lastfm](https://www.last.fm/api):
+  user_token
+[discogs](https://www.discogs.com/developers/):
+  api_key
+  token
 
 # INSTALL
 
