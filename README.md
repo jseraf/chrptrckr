@@ -4,18 +4,18 @@ ChrpTrckr tracks the [CHIRP Radio](https://chirpradio.org/) playlist by artist, 
 
 # REQUIREMENTS
 
-Ruby >= 3.0.2
-Postgres >= 9.6
-Bundler >= 2.2.22
-
+Ruby >= 3.0.2  
+Postgres >= 9.6  
+Bundler >= 2.2.22  
 ## API Tokens
 Update Rails [credentials file](https://guides.rubyonrails.org/security.html#custom-credentials) to include:
 
-[lastfm](https://www.last.fm/api):
-  user_token
-[discogs](https://www.discogs.com/developers/):
-  api_key
-  token
+- [lastfm](https://www.last.fm/api):  
+  - user_token  
+
+- [discogs](https://www.discogs.com/developers/):  
+  - api_key  
+  - token  
 
 # INSTALL
 
