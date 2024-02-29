@@ -33,7 +33,7 @@
   }
 
   h1 {
-    @apply text-2xl;
+    @apply text-2xl mb-3;
   }
 
   h2 {
@@ -45,7 +45,7 @@
   }
 
   form {
-    @apply m-2;
+    @apply ml-0 m-2;
   }
 
   form input[type='search'] {
@@ -159,8 +159,16 @@
     @apply font-bold py-4 hover:text-red-850;
   }
 
+  #djs td.time {
+    @apply text-sm text-gray-900
+  }
+
   #most-played {
     @apply grid grid-cols-4 gap-4 leading-snug;
+  }
+
+  #most-played .timeframe {
+    @apply bg-white border-solid border-gray-300 border-r-2 border-b-2 p-4
   }
 
   #most-played .timeframe .count {
