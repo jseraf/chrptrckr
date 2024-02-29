@@ -1,6 +1,4 @@
 class Spin < ApplicationRecord
-  UNIQUE_ERROR_MESSAGE = 'with this chirp_id has already been saved.'
-
   belongs_to :dj,       touch: true, counter_cache: true
   belongs_to :artist,   touch: true, counter_cache: true
   belongs_to :release,  touch: true, counter_cache: true
@@ -12,7 +10,7 @@ class Spin < ApplicationRecord
     if new_dj?
       broadcast_prepend_to('spin',  target:   'spins_table',
                                     partial:  'spins/dj',
-                                    locals:   { dj: self.dj} )
+                                    locals:   { dj: self.dj})
 
     end
     #   then add the spin after the current DJ's row
@@ -21,7 +19,7 @@ class Spin < ApplicationRecord
                                locals:   { spin: self } )
   end
 
-  validates_uniqueness_of :chirp_id, message: UNIQUE_ERROR_MESSAGE
+  validates_uniqueness_of :chirp_id
 
   #SCOPES
   scope :recent,            -> { order(played_at: :desc) }
