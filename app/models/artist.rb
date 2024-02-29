@@ -19,9 +19,8 @@ class Artist < ApplicationRecord
   private
 
   def lastfm
-    lastfm_results = LastfmSearch.call(
-                       search_type: 'artist',
-                       search_hash: { artist: name })
+    lastfm_results = LastfmSearch.call(search_type: 'artist',
+                                       search_hash: { artist: name })
     return unless lastfm_results.present?
 
     self.lastfm_url = lastfm_results['url']
