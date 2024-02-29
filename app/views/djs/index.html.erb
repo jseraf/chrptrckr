@@ -4,14 +4,18 @@
   <%= f.search_field :name_cont, placeholder: 'Search by name' %>
   <%= f.submit %>
 <% end %>
-<table>
+<table id='djs'>
   <thead>
     <th>Name</th>
+    <th>Last Seen</th>
+    <th>First Seen</th>
   </thead>
   <tbody>
   <% @djs.each do |dj| %>
-    <tr>
-      <td class="<%= cycle('even', 'odd') %>"><%= link_to dj.name, dj_path(dj) %></td>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td><%= link_to dj.name, dj_path(dj) %></td>
+      <td class="dates"><%= dj.updated_at.strftime('%m/%d/%Y') %></td>
+      <td class="dates"><%= dj.created_at.strftime('%m/%d/%Y') %></td> 
     </tr>
   <% end %>
   </tbody>
