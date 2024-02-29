@@ -15,13 +15,13 @@ class Dj < ApplicationRecord
 
   def most_played_artist
       Artist.joins(:spins)
-        .merge(Spin.by_dj(self.id))
-        .group(:name)
-        .count
-        .sort_by { |_, count| count }
-        .reverse
-        .take(10)
-        .to_h
+            .merge(Spin.by_dj(self.id))
+            .group(:name)
+            .count
+            .sort_by { |_, count| count }
+            .reverse
+            .take(10)
+            .to_h
   end
 
 end

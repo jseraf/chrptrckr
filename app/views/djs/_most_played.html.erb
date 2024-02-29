@@ -1,11 +1,13 @@
-<%- previous_count = nil %>
+<% if most_played_artist.none? %>
+  <%- previous_count = nil %>
 
-<h2>Most Played Artists</h2>
+  <h2>Most Played Artists</h2>
 
-<% @dj.most_played_artist.each do |artist, count| %>
-  <div class="grid grid-cols-12 gap-0">
-    <div class="color-gray-300 font-bold"><%= (previous_count != count) ? count : '&nbsp;'.html_safe %></div>
-    <div class="col-span-11 artist"><%= link_to artist, dj_artist_path(@dj, artist.parameterize) %></div>
-    <% previous_count = count %>
-  </div>
+  <% most_played_artist.each do |artist, count| %>
+    <div class="grid grid-cols-12 gap-0">
+      <div class="color-gray-300 font-bold"><%= (previous_count != count) ? count : '&nbsp;'.html_safe %></div>
+      <div class="col-span-11 artist"><%= link_to artist, dj_artist_path(dj, artist.parameterize) %></div>
+      <% previous_count = count %>
+    </div>
+  <% end %>
 <% end %>
