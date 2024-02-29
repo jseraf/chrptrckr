@@ -2,7 +2,7 @@
 
 <h1><%= "#{@dj.name}" %></h1>
 
-<%= render 'most_played' if @dj.most_played_artist.any? %>
+<%= render partial: 'most_played', locals: { dj: @dj, most_played_artist: @dj.most_played_artist } %>
 
 <h2>Recently Played</h2>
 
