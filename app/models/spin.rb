@@ -62,7 +62,15 @@ class Spin < ApplicationRecord
   # dj
   scope :by_dj, -> (dj_id ) { where('dj_id = ?', dj_id) }
 
-  ransack_alias :spin, :track_or_artist_name
+  ransack_alias :track, :track_or_artist_name
+
+  def self.ransackable_attributes(auth_object = nil)
+    ['track']
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ['artist']
+  end
 
   private
 

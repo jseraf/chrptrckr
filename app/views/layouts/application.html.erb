@@ -28,7 +28,7 @@
           </div>
           <div>
             <%= search_form_for @q, method: :get, url: spins_path, data: { turbo: false } do |f| %>
-              <%= f.search_field :spin_cont, placeholder: 'Search artist or song' %>
+              <%= f.search_field :track_cont, placeholder: 'Search artist or song' %>
               <%= hidden_field_tag 'page', '1', { class: 'pagy-page' } %>
               <%= f.submit %>
             <% end %>

@@ -24,4 +24,7 @@ class Dj < ApplicationRecord
             .to_h
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
+  end
 end
