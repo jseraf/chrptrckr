@@ -16,6 +16,14 @@ class Artist < ApplicationRecord
     new_record? || slug.blank?
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ['name']
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ['spin']
+  end
+
   private
 
   def lastfm
