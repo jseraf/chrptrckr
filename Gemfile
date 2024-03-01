@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '7.0.6'
+gem 'rails', '7.1.3.2'
 # Use postgres as the database for Active Record
 gem 'pg', '~> 1.1.0'
 # Use Puma as the app server
@@ -42,7 +42,7 @@ gem 'whenever'
 gem 'pagy', '~> 5.2'
 
 # search
-gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'ransack', '~> 4.1.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
