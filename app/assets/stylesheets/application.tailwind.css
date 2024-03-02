@@ -61,20 +61,14 @@
     @apply border-collapse min-w-full my-6;
   }
 
-  .turbo-header  {
+  .turbo-header,
+  .turbo-row {
     @apply grid md:grid-cols-5 gap-0 sm:grid-cols-none;
   }
 
-  .turbo-header.artist {
-    md:grid-cols-4 !important;
-  }
-
-  .turbo-row {
-    @apply grid gap-0 md:grid-cols-5 sm:grid-cols-none ;
-  }
-
-  .turbo-row.artist {
-    md:grid-cols-4 !important;
+  #artist-spins .turbo-header,
+  .turbo-row.spin.artist {
+    @apply grid md:grid-cols-4 gap-0 sm:grid-cols-none;
   }
 
   .turbo-row.spin:nth-of-type(odd) {
