@@ -4,7 +4,7 @@ ChrpTrckr tracks the [CHIRP Radio](https://chirpradio.org/) playlist by artist, 
 
 # REQUIREMENTS
 
-Ruby >= 3.0.2  
+Ruby >= 3.3.1  
 Postgres >= 9.6  
 Bundler >= 2.2.22  
 ## API Tokens

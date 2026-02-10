@@ -45,3 +45,8 @@ yarn-debug.log*
 
 # cssbundling-rails
 /app/assets/stylesheets/application.css
+
+*.DS_Store
+# Ignore key files for decrypting credentials and more.
+/config/*.key
+

@@ -4,9 +4,17 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  host: localhost
-  database: chrptrckr_development
+  primary:
+    <<: *default
+    host: localhost
+    database: chrptrckr_development
+    username: chrptrckr_development
+    port: 5432
+  queue:
+    adapter: postgresql
+    encoding: unicode
+    database: chrptrckr_development_queue
+    migrations_paths: db/queue_migrate
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -15,7 +23,10 @@ test:
   <<: *default
   host: localhost
   database: chrptrckr_test
+  username: chrptrckr_test
 
 production:
   <<: *default
   database: chrptrckr_production
+
+

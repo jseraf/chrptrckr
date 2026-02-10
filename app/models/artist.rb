@@ -27,6 +27,8 @@ class Artist < ApplicationRecord
   private
 
   def lastfm
+    return if lastfm_url.present? && lastfm_bio.present?
+
     lastfm_results = LastfmSearch.call(search_type: 'artist',
                                        search_hash: { artist: name })
     return unless lastfm_results.present?
@@ -36,7 +38,7 @@ class Artist < ApplicationRecord
     bio = lastfm_results['bio']['content']
 
     # Account for the various incarnations of empty bios
-    self.lastfm_bio = if bio.empty? || bio.class == Hash
+    self.lastfm_bio = if bio.empty? || bio.instance_of?(Hash)
                         ''
                       else
                         bio.split('<a href')&.first&.strip
@@ -44,11 +46,15 @@ class Artist < ApplicationRecord
   end
 
   def discogs
-    discogs_results = DiscogsSearch.call(search_type: 'artist',
-                                         search_term: name)
-    return unless discogs_results.results.first.present?
+    return if discogs_url.present?
 
-    path = discogs_results.results.first.uri
-    self.discogs_url = "http://discogs.com#{path}"
+    discogs = discogs_results
+    return unless discogs.present? # && discogs_results.results.first.present?
+
+    self.discogs_url = "http://discogs.com#{discogs.uri}"
+  end
+
+  def discogs_results
+    DiscogsSearch.call(search_type: 'artist', search_term: name)&.results&.first
   end
 end

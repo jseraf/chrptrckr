@@ -11,13 +11,14 @@ class LastfmSearch
       wrapper = Lastfm.new(API_KEY, TOKEN)
       wrapper.send(search_type).get_info(search_hash)
     rescue Lastfm::ApiError => e # "The artist you supplied could not be found"
-      return nil
+      puts "#{e}"
+      nil
     end
 
     private
 
     def album(search_hash)
-      self.wrapper.album.get_info(search_hash)
+      wrapper.album.get_info(search_hash)
     end
   end
 end

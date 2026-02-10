@@ -1,3 +1,4 @@
-web: bin/rails server -p 3000
-js: yarn build --watch
-css: yarn build:css --watch
+web: env OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES bin/rails server -p 3000
+js: npm run build -- --watch
+css: npm run build:css -- --watch
+jobs: env OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES bin/rails solid_queue:start

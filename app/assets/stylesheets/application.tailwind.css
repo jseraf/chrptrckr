@@ -1,6 +1,30 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; 
+
+@import "./artists.css";
+@import "./spins.css";
+
+@theme {
+  --color-gray: var(--color-zinc);
+  
+  /* Manual override for the specific shade giving you trouble */
+  --color-gray-250: #dfdfdf;
+  --color-gray-400: var(--color-zinc-400);
+  --color-amber-1000: #3f3437;
+  --color-red-850: #822036;
+  --color-yellow-650: #776268;
+}
+
+--- Inline the contents of spins.css here ---
+th, td { vertical-align: top; }
+.release { font-style: italic; }
+
+/* --- Inline the contents of artists.css here --- */
+#bio + [data-readmore-toggle] + a,
+#bio[data-readmore] + a {
+  font-size: 1em;
+}
 
 @layer components {
   body {
@@ -173,7 +197,7 @@
     @apply flex space-x-2;
   }
 
-  .pagy-nav .page a,
+  pagy-nav .page a,
   .pagy-nav .page.active,
   .pagy-nav .page.prev.disabled,
   .pagy-nav .page.next.disabled,
@@ -181,37 +205,20 @@
   .pagy-nav-js .page.active,
   .pagy-nav-js .page.prev.disabled,
   .pagy-nav-js .page.next.disabled {
-    @apply block rounded-lg px-3 py-1 text-sm text-gray-500 bg-gray-200 shadow-md hover:bg-gray-300 active:bg-gray-400 active:text-white;
+    @apply block rounded-lg px-3 py-1 text-sm shadow-md;
+    background-color: var(--color-zinc-200);
+    color: var(--color-zinc-500);
   }
 
-  .pagy-nav .page.prev.disabled,
-  .pagy-nav .page.next.disabled,
-  .pagy-nav-js .page.prev.disabled,
-  .pagy-nav-js .page.next.disabled {
-    @apply text-gray-400 font-bold cursor-default hover:text-gray-400 hover:bg-gray-200 active:text-gray-400 active:bg-gray-200;
+  .pagy-nav .page a:hover,
+  .pagy-nav-js .page a:hover {
+    background-color: var(--color-zinc-300);
   }
 
-  .pagy-nav .page.active,
-  .pagy-nav-js .page.active {
-    @apply text-white cursor-default bg-gray-400 hover:text-white hover:bg-gray-400 active:bg-gray-400 active:text-white;
-  }
-
-
-  .pagy-combo-nav-js {
-    @apply flex max-w-max rounded-full px-3 py-1 text-sm text-gray-500 font-semibold bg-gray-200 shadow-md;
-  }
-
-  .pagy-combo-nav-js .pagy-combo-input {
-    @apply bg-white px-2 rounded-sm
-  }
-
-  .pagy-combo-nav-js .page.prev,
-  .pagy-combo-nav-js .page.next {
-      @apply ml-1 hover:text-gray-800 active:text-gray-800;
-  }
-
-  .pagy-combo-nav-js .page.prev.disabled,
-  .pagy-combo-nav-js .page.next.disabled {
-    @apply text-gray-400 cursor-default;
+  /* The specific line that was failing: active:bg-gray-400 */
+  .pagy-nav .page a:active,
+  .pagy-nav-js .page a:active {
+    background-color: var(--color-zinc-400);
+    color: white;
   }
 }

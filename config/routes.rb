@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   get 'most-played', to: 'most_played#index'
 
   root to: 'spins#index'
+
+  # view scheduled tasks
+  mount MissionControl::Jobs::Engine, at: '/jobs'
 end
